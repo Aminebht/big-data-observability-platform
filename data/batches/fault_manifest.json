@@ -1,0 +1,132 @@
+[
+  {
+    "batch_month": "2017-03",
+    "fault_type": "missing_spike",
+    "description": "40 % de Temperature_F vidés",
+    "expected_detection": [
+      "CMP_WEATHER_CORE",
+      "missing_drift"
+    ],
+    "rows_before": 57315,
+    "rows_after": 57315
+  },
+  {
+    "batch_month": "2017-09",
+    "fault_type": "duplicates",
+    "description": "5 % des lignes dupliquées avec le même ID",
+    "expected_detection": [
+      "UNQ_ID",
+      "UNQ_EVENT"
+    ],
+    "rows_before": 76902,
+    "rows_after": 80747
+  },
+  {
+    "batch_month": "2018-02",
+    "fault_type": "out_of_range",
+    "description": "Temperature_F=500 (2 %), Severity=9 (1 %), coordonnées hors USA (1 %)",
+    "expected_detection": [
+      "VAL_TEMP",
+      "VAL_SEVERITY",
+      "VAL_LAT_LNG",
+      "outliers"
+    ],
+    "rows_before": 71535,
+    "rows_after": 71535
+  },
+  {
+    "batch_month": "2018-08",
+    "fault_type": "inconsistency",
+    "description": "End_Time avant Start_Time (3 %), Day/Night contradictoires (3 %)",
+    "expected_detection": [
+      "CNS_TIME_ORDER",
+      "CNS_TWILIGHT"
+    ],
+    "rows_before": 76436,
+    "rows_after": 76436
+  },
+  {
+    "batch_month": "2019-03",
+    "fault_type": "format",
+    "description": "Zipcode 'ABCDE' (3 %), Start_Time au format MM/dd/yyyy HH:mm (3 %)",
+    "expected_detection": [
+      "CNF_ZIPCODE",
+      "CNF_TIMESTAMP"
+    ],
+    "rows_before": 69437,
+    "rows_after": 69437
+  },
+  {
+    "batch_month": "2019-07",
+    "fault_type": "schema_rename",
+    "description": "Weather_Condition renommée en Weather",
+    "expected_detection": [
+      "schema",
+      "CMP_WEATHER_CORE"
+    ],
+    "rows_before": 68257,
+    "rows_after": 68257
+  },
+  {
+    "batch_month": "2019-12",
+    "fault_type": "volume_drop",
+    "description": "lot réduit à 10 % des lignes",
+    "expected_detection": [
+      "volume"
+    ],
+    "rows_before": 98364,
+    "rows_after": 9836
+  },
+  {
+    "batch_month": "2020-05",
+    "fault_type": "volume_spike",
+    "description": "lot triplé (nouveaux ID)",
+    "expected_detection": [
+      "volume"
+    ],
+    "rows_before": 87705,
+    "rows_after": 263115
+  },
+  {
+    "batch_month": "2020-10",
+    "fault_type": "category_shift",
+    "description": "60 % de Weather_Condition remplacés par 'Snow'",
+    "expected_detection": [
+      "categorical_drift"
+    ],
+    "rows_before": 130879,
+    "rows_after": 130879
+  },
+  {
+    "batch_month": "2021-04",
+    "fault_type": "unit_change",
+    "description": "Pressure_in convertie en hPa pour 30 % des lignes",
+    "expected_detection": [
+      "VAL_PRESSURE",
+      "numeric_drift"
+    ],
+    "rows_before": 90888,
+    "rows_after": 90888
+  },
+  {
+    "batch_month": "2021-11",
+    "fault_type": "schema_drop",
+    "description": "colonne Humidity_pct supprimée",
+    "expected_detection": [
+      "schema",
+      "CMP_WEATHER_CORE"
+    ],
+    "rows_before": 157729,
+    "rows_after": 157729
+  },
+  {
+    "batch_month": "2022-06",
+    "fault_type": "boolean_format",
+    "description": "indicateurs routiers '1'/'0' au lieu de True/False (20 %)",
+    "expected_detection": [
+      "CNF_BOOLEANS"
+    ],
+    "rows_before": 129264,
+    "rows_after": 129264
+  }
+]
