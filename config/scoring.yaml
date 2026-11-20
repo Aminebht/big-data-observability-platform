@@ -1,0 +1,29 @@
+# Calcul du score global de qualité
+# score règle     = % de lignes conformes
+# score dimension = moyenne des scores de règles pondérée par la sévérité (règles mode: monitor exclues)
+# score global    = moyenne pondérée des dimensions
+
+severity_weights:
+  high: 3
+  medium: 2
+  low: 1
+
+dimension_weights:
+  completeness: 0.25
+  validity: 0.25
+  consistency: 0.20
+  uniqueness: 0.15
+  conformity: 0.15
+
+bands:
+  healthy: 95     # score >= 95  -> sain (vert)
+  warning: 85     # 85 <= score < 95 -> avertissement (orange) ; < 85 -> critique (rouge)
+
+# un changement de schéma ou l'échec d'une règle `critical: true` force le statut critique
+force_critical_on:
+  schema_change: true
+  critical_rule_failure: true
+
+# l'échec d'une règle notée de ces sévérités ramène au minimum au statut avertissement
+force_warning_on:
+  rule_failure_severities: [high, medium]

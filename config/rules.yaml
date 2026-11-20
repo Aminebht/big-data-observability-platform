@@ -1,0 +1,245 @@
+# Catalogue des règles de qualité (v1) – US Accidents
+#
+# Types de règles :
+#   not_null        : aucune des colonnes ne doit être vide (une ligne échoue si une colonne est vide)
+#   unique          : la combinaison de colonnes doit être unique dans le lot
+#   in_range        : min <= valeur <= max (valeurs vides ignorées)
+#   allowed_values  : valeur dans une liste (valeurs vides ignorées)
+#   regex           : la valeur BRUTE (texte reçu) respecte un motif (valeurs vides ignorées)
+#   expression      : condition SQL qui doit être vraie ; `applies_when` restreint les lignes contrôlées.
+#                     SQL portable (Spark SQL et Polars SQL) : comparaisons, BETWEEN, IS NULL, abs, coalesce.
+#                     Les horodatages existent aussi en secondes epoch : Start_Time_s, End_Time_s, Weather_Timestamp_s
+#
+# max_fail_rate : taux d'échec toléré avant que la règle soit « en échec » (défaut 0)
+# mode: monitor : la règle est mesurée et suivie (dérive) mais n'entre pas dans le score
+# severity      : high (poids 3) / medium (2) / low (1) ; critical: true force le statut critique du lot
+
+rules:
+  # ------------------------------------------------------------------ Complétude
+  - id: CMP_KEY_FIELDS
+    dimension: completeness
+    type: not_null
+    columns: [ID, Severity, Start_Time, Start_Lat, Start_Lng, State]
+    severity: high
+    critical: true
+    description: Les champs clés ne doivent jamais être vides
+
+  - id: CMP_LOCATION
+    dimension: completeness
+    type: not_null
+    columns: [City, Zipcode, Timezone]
+    max_fail_rate: 0.01
+    severity: medium
+    description: Les champs de localisation sont vides dans au plus 1 % des lignes
+
+  - id: CMP_WEATHER_CORE
+    dimension: completeness
+    type: not_null
+    columns: [Temperature_F, Humidity_pct, Pressure_in, Visibility_mi, Weather_Condition]
+    max_fail_rate: 0.05
+    severity: medium
+    description: Les mesures météo principales sont vides dans au plus 5 % des lignes
+
+  - id: CMP_WEATHER_OPT
+    dimension: completeness
+    type: not_null
+    columns: [Wind_Chill_F, Precipitation_in]
+    mode: monitor
+    severity: low
+    description: Champs météo optionnels, souvent vides par nature (suivi de dérive uniquement)
+
+  - id: CMP_END_COORDS
+    dimension: completeness
+    type: not_null
+    columns: [End_Lat, End_Lng]
+    mode: monitor
+    severity: low
+    description: Coordonnées de fin, vides dans ~44 % des lignes (suivi de dérive uniquement)
+
+  # ------------------------------------------------------------------ Unicité
+  - id: UNQ_ID
+    dimension: uniqueness
+    type: unique
+    columns: [ID]
+    severity: high
+    critical: true
+    description: L'identifiant ID est unique
+
+  - id: UNQ_EVENT
+    dimension: uniqueness
+    type: unique
+    columns: [Start_Time, Start_Lat, Start_Lng, Description]
+    max_fail_rate: 0.08   # profilage : 5,1 % de doublons d'événement réels -> alerte seulement au-delà de 8 %
+    severity: medium
+    description: Pas deux lignes pour le même événement (même heure, lieu et description)
+
+  # ------------------------------------------------------------------ Validité
+  - id: VAL_SEVERITY
+    dimension: validity
+    type: in_range
+    column: Severity
+    min: 1
+    max: 4
+    severity: high
+    description: La gravité est comprise entre 1 et 4
+
+  - id: VAL_LAT_LNG
+    dimension: validity
+    type: expression
+    condition: "Start_Lat BETWEEN 24 AND 50 AND Start_Lng BETWEEN -125 AND -66"
+    applies_when: "Start_Lat IS NOT NULL AND Start_Lng IS NOT NULL"
+    severity: high
+    description: Les coordonnées sont dans les limites des États-Unis continentaux
+
+  - id: VAL_TEMP
+    dimension: validity
+    type: in_range
+    column: Temperature_F
+    min: -80
+    max: 140
+    max_fail_rate: 0.0005   # valeurs extrêmes réelles rares (-89 / 207 °F)
+    severity: medium
+    description: Température physiquement plausible (-80 à 140 °F)
+
+  - id: VAL_HUMIDITY
+    dimension: validity
+    type: in_range
+    column: Humidity_pct
+    min: 0
+    max: 100
+    severity: medium
+    description: Humidité entre 0 et 100 %
+
+  - id: VAL_PRESSURE
+    dimension: validity
+    type: in_range
+    column: Pressure_in
+    min: 15    # profilage : pression station (altitude), p1 = 24,5 inHg -> borne basse 15
+    max: 32
+    max_fail_rate: 0.001
+    severity: low
+    description: Pression atmosphérique (station) entre 15 et 32 inHg
+
+  - id: VAL_VISIBILITY_WIND
+    dimension: validity
+    type: expression
+    condition: "coalesce(Visibility_mi BETWEEN 0 AND 100, true) AND coalesce(Wind_Speed_mph BETWEEN 0 AND 200, true)"
+    max_fail_rate: 0.001   # capteurs : quelques valeurs extrêmes réelles
+    severity: low
+    description: Visibilité entre 0 et 100 mi et vent entre 0 et 200 mph
+
+  - id: VAL_DISTANCE
+    dimension: validity
+    type: in_range
+    column: Distance_mi
+    min: 0
+    max: 500
+    severity: medium
+    description: Longueur de route affectée entre 0 et 500 mi
+
+  - id: VAL_STATE
+    dimension: validity
+    type: allowed_values
+    column: State
+    values: [AL, AZ, AR, CA, CO, CT, DE, DC, FL, GA, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA,
+             MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD,
+             TN, TX, UT, VT, VA, WA, WV, WI, WY]
+    severity: high
+    description: Code d'État parmi les 48 États continentaux + DC
+
+  # ------------------------------------------------------------------ Cohérence
+  - id: CNS_TIME_ORDER
+    dimension: consistency
+    type: expression
+    condition: "End_Time > Start_Time"
+    applies_when: "Start_Time IS NOT NULL AND End_Time IS NOT NULL"
+    severity: high
+    description: La fin de l'accident est postérieure à son début
+
+  - id: CNS_DURATION
+    dimension: consistency
+    type: expression
+    condition: "End_Time_s - Start_Time_s <= 30 * 86400"
+    applies_when: "Start_Time IS NOT NULL AND End_Time IS NOT NULL"
+    max_fail_rate: 0.001
+    severity: low
+    description: La durée de l'impact est inférieure à 30 jours
+
+  - id: CNS_WEATHER_TS
+    dimension: consistency
+    type: expression
+    condition: "abs(Weather_Timestamp_s - Start_Time_s) <= 7200"
+    applies_when: "Start_Time IS NOT NULL AND Weather_Timestamp IS NOT NULL"
+    max_fail_rate: 0.02   # mois normaux : p90 = 1,6 %
+    severity: low
+    description: L'observation météo est à moins de 2 h du début de l'accident
+
+  - id: CNS_WINDCHILL
+    dimension: consistency
+    type: expression
+    condition: "Wind_Chill_F <= Temperature_F + 0.5"
+    applies_when: "Wind_Chill_F IS NOT NULL AND Temperature_F IS NOT NULL"
+    max_fail_rate: 0.001
+    severity: low
+    description: La température ressentie (wind chill) ne dépasse pas la température
+
+  - id: CNS_TWILIGHT
+    dimension: consistency
+    type: expression
+    condition: "NOT (Sunrise_Sunset = 'Day' AND Civil_Twilight = 'Night')"
+    applies_when: "Sunrise_Sunset IS NOT NULL AND Civil_Twilight IS NOT NULL"
+    max_fail_rate: 0.001   # mois normaux : max 0,04 %
+    severity: medium
+    description: Si le soleil est levé, le crépuscule civil ne peut pas être « Night »
+
+  - id: CNS_ZERO_DIST
+    dimension: consistency
+    type: expression
+    condition: "End_Lat IS NULL OR (abs(End_Lat - Start_Lat) < 0.0001 AND abs(End_Lng - Start_Lng) < 0.0001)"
+    applies_when: "Distance_mi = 0"
+    max_fail_rate: 0.01
+    severity: low
+    description: Distance nulle implique coordonnées de fin absentes ou égales au début
+
+  # ------------------------------------------------------------------ Conformité (formats et types)
+  - id: CNF_ID_FORMAT
+    dimension: conformity
+    type: regex
+    column: ID
+    pattern: '^A-\d+$'
+    severity: medium
+    description: ID au format A-<chiffres>
+
+  - id: CNF_ZIPCODE
+    dimension: conformity
+    type: regex
+    column: Zipcode
+    pattern: '^\d{5}(-\d{4})?$'
+    max_fail_rate: 0.001
+    severity: low
+    description: Code postal au format 12345 ou 12345-6789
+
+  - id: CNF_TIMESTAMP
+    dimension: conformity
+    type: regex
+    columns: [Start_Time, End_Time]
+    pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+    severity: medium
+    description: Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes)
+
+  - id: CNF_BOOLEANS
+    dimension: conformity
+    type: regex
+    columns: [Amenity, Bump, Crossing, Give_Way, Junction, No_Exit, Railway, Roundabout,
+              Station, Stop, Traffic_Calming, Traffic_Signal, Turning_Loop]
+    pattern: '^(True|False)$'
+    severity: low
+    description: Les indicateurs routiers valent uniquement True ou False
+
+  - id: CNF_DAY_NIGHT
+    dimension: conformity
+    type: allowed_values
+    columns: [Sunrise_Sunset, Civil_Twilight, Nautical_Twilight, Astronomical_Twilight]
+    values: [Day, Night]
+    severity: low
+    description: Les indicateurs jour/nuit valent uniquement Day ou Night
