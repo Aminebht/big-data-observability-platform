@@ -1,0 +1,56 @@
+# Détection d'anomalies et de dérive (Partie 3)
+# Fenêtre de référence glissante : les `window` lots précédents ; aucune alerte avant `warmup` lots.
+# Calibrage : seuils standard de départ, puis rejeu des détecteurs (scripts/replay_detectors.py) sur les mois
+# sans défaut injecté (run clean, 2017-2023). Chaque seuil est placé au-dessus du bruit des mois normaux ;
+# les mois qui le dépassent encore sont de vraies ruptures du jeu de données (2019-04, 2020, fin 2022, 2023),
+# que l'on veut signaler. Les 12 défauts injectés restent tous détectés.
+
+reference:
+  window: 12
+  warmup: 12       # une année complète : la référence couvre toutes les saisons
+  seasonal: true   # dérive de distribution : même saison l'an passé (mois M-11..M-13)
+  recent: 3        # ... ET les 3 derniers mois (les deux écarts doivent dépasser le seuil)
+
+volume:                      # variation inhabituelle du nombre d'enregistrements
+  method: robust_zscore_log  # z = 0.6745 * (log(n) - médiane) / MAD
+  alert: 5.0                 # seuil usuel 3,5 relevé à 5 ; mois sans défaut : p95 = 6,8, 6 mois au-dessus
+                             # (2020-07, 2020-08, 2020-11, 2020-12, 2023-02, 2023-03 : vraies variations de volume)
+
+numeric_drift:               # changement de distribution des variables numériques
+  method: psi
+  bins: 10
+  columns: [Severity, Distance_mi, Temperature_F, Humidity_pct, Pressure_in,
+            Visibility_mi, Wind_Speed_mph, Precipitation_in, Start_Lat, Start_Lng]
+  warning: 0.10
+  alert: 0.25                # repères usuels du PSI : < 0,10 stable, > 0,25 changement important
+  alert_by_column:
+    Distance_mi: 0.40        # p95 sans défaut = 0,34
+    Pressure_in: 0.35        # p95 sans défaut = 0,23 ; rupture réelle 2019-04 à 2019-06 au-dessus
+
+categorical_drift:           # changement de distribution des variables catégorielles
+  method: jensen_shannon
+  top_k: 20
+  columns: [Weather_Condition, Source, State, Sunrise_Sunset]
+  alert: 0.10
+  alert_by_column:
+    Weather_Condition: 0.50  # libellés météo instables (p95 sans défaut = 0,20 ; rupture réelle 2019-04/05)
+    Source: 0.25             # p95 sans défaut = 0,24
+    State: 0.20              # p95 sans défaut = 0,16
+    Sunrise_Sunset: 0.15     # p95 sans défaut = 0,12
+
+outliers:                    # valeurs numériques anormales (niveau ligne)
+  method: iqr
+  k: 3.0
+  # Pressure_in (bimodal : altitude), Distance_mi et Precipitation_in (majoritairement 0) exclues :
+  # IQR non pertinent ; ces colonnes restent couvertes par les règles de validité et le PSI.
+  columns: [Temperature_F, Humidity_pct, Visibility_mi, Wind_Speed_mph]
+  alert_ratio: 3.0           # alerte si taux d'aberrants > 3 x taux de référence
+  min_rate: 0.02             # ... et au moins 2 % des valeurs (mois sans défaut : aucune alerte)
+
+missing_drift:               # hausse du taux de valeurs manquantes
+  alert_points: 0.10         # +10 points de pourcentage par rapport à la référence (mois sans défaut : max +5,7)
+  alert_by_column:           # colonnes naturellement très variables
+    End_Lat: 0.30            # 2020-07 et 2020-08 au-dessus (vraie variation, avec la source et le volume)
+    End_Lng: 0.30
+    Wind_Chill_F: 0.30
+    Precipitation_in: 0.30
