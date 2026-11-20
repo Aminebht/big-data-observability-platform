@@ -1,0 +1,30 @@
+﻿# Données : brutes et intermédiaires non versionnées (≈ 5 Go, régénérables avec les scripts 01 à 05)
+data/*
+!data/metrics/
+!data/batches/
+data/batches/*
+!data/batches/fault_manifest.json
+
+# Environnement et fichiers générés localement
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+tmp/
+logs/
+bigdata-dqtmp/
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Power BI : cache et paramètres locaux
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Fichiers temporaires Office
+~$*
