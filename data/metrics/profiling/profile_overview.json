@@ -1,0 +1,13 @@
+{
+  "rows": 7728394,
+  "columns": 46,
+  "seconds": 664.7,
+  "duplicate_ids_groups": 0,
+  "duplicate_ids_rows": 0,
+  "content_duplicates_extra_rows": 102338,
+  "event_duplicates_extra_rows": 397061,
+  "end_before_start": "0",
+  "start_time_fractional_format": "743166",
+  "first": "2016-01-14 21:18:33",
+  "last": "2023-04-01 00:30:00"
+}
