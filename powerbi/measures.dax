@@ -1,0 +1,79 @@
+// ============================================================================
+// Mesures DAX – tableau de bord « Surveillance de la qualité des données »
+// À créer dans une table de mesures vide nommée _Mesures (Accueil > Entrer des données > OK).
+// Les tables sont décrites dans powerbi/GUIDE.md.
+// ============================================================================
+
+// ---------- Volume ----------
+Enregistrements analysés = SUM ( dim_batch[rows] )
+Lots traités = DISTINCTCOUNT ( dim_batch[BatchKey] )
+
+// ---------- Score global (moyenne pondérée par le volume des lots) ----------
+Score global =
+DIVIDE (
+    SUMX ( dim_batch, dim_batch[global_score] * dim_batch[rows] ),
+    SUM ( dim_batch[rows] )
+)
+Score complétude = DIVIDE ( SUMX ( dim_batch, dim_batch[score_completeness] * dim_batch[rows] ), SUM ( dim_batch[rows] ) )
+Score unicité    = DIVIDE ( SUMX ( dim_batch, dim_batch[score_uniqueness]   * dim_batch[rows] ), SUM ( dim_batch[rows] ) )
+Score validité   = DIVIDE ( SUMX ( dim_batch, dim_batch[score_validity]     * dim_batch[rows] ), SUM ( dim_batch[rows] ) )
+Score cohérence  = DIVIDE ( SUMX ( dim_batch, dim_batch[score_consistency]  * dim_batch[rows] ), SUM ( dim_batch[rows] ) )
+Score conformité = DIVIDE ( SUMX ( dim_batch, dim_batch[score_conformity]   * dim_batch[rows] ), SUM ( dim_batch[rows] ) )
+
+Statut global =
+VAR s = [Score global]
+RETURN SWITCH ( TRUE (), ISBLANK ( s ), BLANK (), s >= 95, "Sain", s >= 85, "Avertissement", "Critique" )
+
+// couleur (mise en forme conditionnelle > valeur du champ)
+Couleur score =
+VAR s = [Score global]
+RETURN SWITCH ( TRUE (), ISBLANK ( s ), "#9AA0A6", s >= 95, "#34A853", s >= 85, "#FBBC04", "#EA4335" )
+
+Lots critiques = CALCULATE ( [Lots traités], dim_batch[status] = "critical" )
+Lots en avertissement = CALCULATE ( [Lots traités], dim_batch[status] = "warning" )
+
+// ---------- Dernier lot ----------
+Dernier mois = MAX ( dim_batch[batch_month] )
+Statut dernier lot =
+VAR m = [Dernier mois]
+RETURN CALCULATE ( SELECTEDVALUE ( dim_batch[status] ), dim_batch[batch_month] = m )
+Score dernier lot =
+VAR m = [Dernier mois]
+RETURN CALCULATE ( AVERAGE ( dim_batch[global_score] ), dim_batch[batch_month] = m )
+
+// ---------- Complétude ----------
+Taux de complétude =
+DIVIDE ( SUM ( fact_column_completeness[rows] ) - SUM ( fact_column_completeness[missing] ),
+         SUM ( fact_column_completeness[rows] ) )
+Taux de valeurs manquantes = 1 - [Taux de complétude]
+
+// ---------- Règles / erreurs ----------
+Erreurs détectées = SUM ( fact_rule_result[rows_failed] )
+Lignes contrôlées = SUM ( fact_rule_result[rows_checked] )
+Taux de conformité = 1 - DIVIDE ( [Erreurs détectées], [Lignes contrôlées] )
+Règles en échec = CALCULATE ( COUNTROWS ( fact_rule_result ), fact_rule_result[status] = "fail" )
+Erreurs (règles notées) = CALCULATE ( [Erreurs détectées], fact_rule_result[mode] = "score" )
+
+// ---------- Alertes ----------
+Alertes = DISTINCTCOUNT ( fact_alert[alert_id] )
+Alertes critiques = CALCULATE ( [Alertes], fact_alert[severity] = "CRITICAL" )
+Alertes avertissement = CALCULATE ( [Alertes], fact_alert[severity] = "WARNING" )
+Alertes info = CALCULATE ( [Alertes], fact_alert[severity] = "INFO" )
+Alertes détecteurs = CALCULATE ( [Alertes], fact_alert[source] = "detector" )
+Alertes règles = CALCULATE ( [Alertes], fact_alert[source] = "rule" )
+
+// ---------- Dérive ----------
+Anomalies détectées = CALCULATE ( COUNTROWS ( fact_drift ), fact_drift[is_anomaly] = TRUE () )
+Valeur de dérive = AVERAGE ( fact_drift[value] )
+Taux d'anomalie = DIVIDE ( [Anomalies détectées], COUNTROWS ( fact_drift ) )
+
+// ---------- Évaluation sur défauts injectés ----------
+Défauts injectés = COUNTROWS ( fact_fault_eval )
+Défauts détectés = CALCULATE ( COUNTROWS ( fact_fault_eval ), fact_fault_eval[detected] = TRUE () )
+Rappel (défauts détectés %) = DIVIDE ( [Défauts détectés], [Défauts injectés] )
+Précision détecteurs = DIVIDE ( SUM ( fact_detector_eval[tp] ), SUM ( fact_detector_eval[total] ) )
+
+// ---------- Performance ----------
+Temps médian (s) = MEDIAN ( fact_run[total_s] )
+Débit médian (lignes/s) = MEDIAN ( fact_run[rows_per_s] )
+Mémoire max médiane (Mo) = MEDIAN ( fact_run[peak_mem_mb] )

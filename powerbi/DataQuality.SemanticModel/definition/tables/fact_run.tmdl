@@ -1,0 +1,194 @@
+/// Mesures des expériences de performance E1–E4.
+table fact_run
+	lineageTag: b9ebf5a5-f043-4d89-82bb-55b652a38ce8
+
+	column run_id
+		dataType: string
+		lineageTag: a56381e4-9168-4274-a6d9-38dc7e6ab04f
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column experiment
+		dataType: string
+		lineageTag: 9d3a0ab1-7743-4d7b-8c52-4721618c6806
+		summarizeBy: none
+		sourceColumn: experiment
+
+		annotation SummarizationSetBy = Automatic
+
+	column engine
+		dataType: string
+		lineageTag: 0b2042d6-723a-4974-aafe-96f79dcbc153
+		summarizeBy: none
+		sourceColumn: engine
+
+		annotation SummarizationSetBy = Automatic
+
+	column cores
+		dataType: string
+		lineageTag: 7237b99d-ab8d-41c5-9742-d27280bf68b3
+		summarizeBy: none
+		sourceColumn: cores
+
+		annotation SummarizationSetBy = Automatic
+
+	column input_format
+		dataType: string
+		lineageTag: e922732f-4b9f-4e68-980f-dd2fcb4aa128
+		summarizeBy: none
+		sourceColumn: input_format
+
+		annotation SummarizationSetBy = Automatic
+
+	column mode
+		dataType: string
+		lineageTag: cbb25d0c-82c0-482d-8470-68e3a8e3c7ec
+		summarizeBy: none
+		sourceColumn: mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column fraction
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2a1f5adf-d322-4c6c-bd70-1ed6044259f1
+		summarizeBy: none
+		sourceColumn: fraction
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows
+		dataType: int64
+		lineageTag: 5fafb3d4-a44f-461b-884f-d2779e6d7684
+		summarizeBy: sum
+		sourceColumn: rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column repeat
+		dataType: int64
+		lineageTag: 660bb07b-3e2c-4511-8adb-4c28d364fd25
+		summarizeBy: none
+		sourceColumn: repeat
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3eabff98-9bed-4519-b32c-df52890e1fc2
+		summarizeBy: sum
+		sourceColumn: total_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 02ee87e3-59a0-4149-8131-a4b2030b815c
+		summarizeBy: sum
+		sourceColumn: load_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column rules_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 42f37fe8-4cbc-4a96-aadd-5b84d549b592
+		summarizeBy: sum
+		sourceColumn: rules_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column detectors_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: d6e1c4e8-b4d3-45d7-95d8-8629b9732c4c
+		summarizeBy: sum
+		sourceColumn: detectors_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column write_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1f9bfb3c-2e6e-43f9-899a-46c60bb6c713
+		summarizeBy: sum
+		sourceColumn: write_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows_per_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6397a560-d8f4-4a41-a27c-b24a0fe8519a
+		summarizeBy: sum
+		sourceColumn: rows_per_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column peak_mem_mb
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9ff9581b-499d-46be-ab49-16b163fcff4e
+		summarizeBy: sum
+		sourceColumn: peak_mem_mb
+
+		annotation SummarizationSetBy = Automatic
+
+	column alerts
+		dataType: int64
+		lineageTag: 482e2102-5cef-421d-82d3-6c1a1bc625b6
+		summarizeBy: sum
+		sourceColumn: alerts
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 3cf2edf6-31a2-494d-831a-a25c522a0799
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column started_at
+		dataType: string
+		lineageTag: 8fbdcb60-4991-4aa1-92e2-85c22fa7ed61
+		summarizeBy: none
+		sourceColumn: started_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column Coeurs
+		dataType: string
+		lineageTag: 938e779c-7948-454b-9468-0c44efb9d400
+		summarizeBy: none
+		sourceColumn: Coeurs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Millions de lignes'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3d62ad72-523c-456d-b4b5-94a27d19a6c4
+		summarizeBy: sum
+		sourceColumn: Millions de lignes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_run = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_run.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"run_id", type text}, {"experiment", type text}, {"engine", type text}, {"cores", type text}, {"input_format", type text}, {"mode", type text}, {"fraction", type number}, {"rows", Int64.Type}, {"repeat", Int64.Type}, {"total_s", type number}, {"load_s", type number}, {"rules_s", type number}, {"detectors_s", type number}, {"write_s", type number}, {"rows_per_s", type number}, {"peak_mem_mb", type number}, {"alerts", Int64.Type}, {"status", type text}, {"started_at", type text}}, "en-US"),
+				    AjoutCoeurs = Table.AddColumn(Types, "Coeurs", each if [cores] = "*" then "tous (12)" else [cores], type text),
+				    AjoutLignes = Table.AddColumn(AjoutCoeurs, "Millions de lignes", each [rows] / 1000000, type number)
+				in
+				    AjoutLignes
+
+	annotation PBI_ResultType = Table
+

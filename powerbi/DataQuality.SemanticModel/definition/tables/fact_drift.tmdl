@@ -1,0 +1,108 @@
+/// Mesures des détecteurs d'anomalies et de dérive par lot.
+table fact_drift
+	lineageTag: d5843e47-48f5-4ae5-ba2b-6a7343a6a5c3
+
+	column run_id
+		dataType: string
+		lineageTag: 9f101ddc-778d-41e8-afe5-bf666ef3e025
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_id
+		dataType: int64
+		lineageTag: c5fac4ec-764c-406c-a7fb-0cfa2b5c5448
+		summarizeBy: none
+		sourceColumn: batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_month
+		dataType: string
+		lineageTag: 13a136d8-4c6d-46e3-b7d1-359a4a34c7a3
+		summarizeBy: none
+		sourceColumn: batch_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column detector
+		dataType: string
+		lineageTag: c63ad511-d5bc-4a03-95ee-7801feedc0fb
+		summarizeBy: none
+		sourceColumn: detector
+
+		annotation SummarizationSetBy = Automatic
+
+	column column
+		dataType: string
+		lineageTag: 54491d2e-228e-493b-8901-e1006794c322
+		summarizeBy: none
+		sourceColumn: column
+
+		annotation SummarizationSetBy = Automatic
+
+	column method
+		dataType: string
+		lineageTag: b01e17f1-a25e-40b9-8084-cf2e60aabab0
+		summarizeBy: none
+		sourceColumn: method
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7ca4729a-1a7b-45d6-a28b-3ff756b36b1a
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference
+		dataType: double
+		formatString: 0.00
+		lineageTag: dced1928-912b-4ab2-a581-2385ba472cc1
+		summarizeBy: sum
+		sourceColumn: reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column threshold
+		dataType: double
+		formatString: 0.00
+		lineageTag: 96ab9bf7-c0f5-4fdc-b776-1fa6d44bb98c
+		summarizeBy: sum
+		sourceColumn: threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_anomaly
+		dataType: boolean
+		lineageTag: e110df07-f115-43ab-a038-09f746fc133f
+		summarizeBy: none
+		sourceColumn: is_anomaly
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatchKey
+		dataType: string
+		isHidden
+		lineageTag: c01348d0-9c67-4213-b407-dc52b62c7679
+		summarizeBy: none
+		sourceColumn: BatchKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_drift = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_drift.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"run_id", type text}, {"batch_id", Int64.Type}, {"batch_month", type text}, {"detector", type text}, {"column", type text}, {"method", type text}, {"value", type number}, {"reference", type number}, {"threshold", type number}, {"is_anomaly", type logical}}, "en-US"),
+				    AjoutCle = Table.AddColumn(Types, "BatchKey", each [run_id] & "|" & [batch_month], type text)
+				in
+				    AjoutCle
+
+	annotation PBI_ResultType = Table
+

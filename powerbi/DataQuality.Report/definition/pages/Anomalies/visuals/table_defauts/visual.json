@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "table_defauts",
+  "position": {
+    "x": 796,
+    "y": 426,
+    "z": 13000,
+    "height": 278,
+    "width": 460,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_fault_eval"
+                    }
+                  },
+                  "Property": "batch_month"
+                }
+              },
+              "queryRef": "fact_fault_eval.batch_month",
+              "nativeQueryRef": "batch_month",
+              "displayName": "Mois"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_fault_eval"
+                    }
+                  },
+                  "Property": "fault_type"
+                }
+              },
+              "queryRef": "fact_fault_eval.fault_type",
+              "nativeQueryRef": "fault_type",
+              "displayName": "Défaut"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_fault_eval"
+                    }
+                  },
+                  "Property": "detected_by"
+                }
+              },
+              "queryRef": "fact_fault_eval.detected_by",
+              "nativeQueryRef": "detected_by",
+              "displayName": "Détecté par"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_fault_eval"
+                    }
+                  },
+                  "Property": "detected"
+                }
+              },
+              "queryRef": "fact_fault_eval.detected",
+              "nativeQueryRef": "detected",
+              "displayName": "Détecté"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_fault_eval"
+                  }
+                },
+                "Property": "batch_month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Défauts injectés : détectés ou manqués'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Défauts injectés : détectés ou manqués'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

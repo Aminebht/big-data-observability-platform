@@ -1,0 +1,79 @@
+/// Évaluation : chaque défaut injecté et les règles/détecteurs qui l'ont détecté.
+table fact_fault_eval
+	lineageTag: 9d1514e7-e4fb-45e4-b9d4-af578d0eb6cb
+
+	column batch_month
+		dataType: string
+		lineageTag: e574f64d-08f7-41d5-8be7-c2a203fbc2c4
+		summarizeBy: none
+		sourceColumn: batch_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column fault_type
+		dataType: string
+		lineageTag: 0717a048-b495-4f37-8b83-e0d096acf497
+		summarizeBy: none
+		sourceColumn: fault_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 2fae4aaa-cdbc-48c8-b757-953fa2f01e08
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected
+		dataType: string
+		lineageTag: 0607d08a-cbd4-4826-a3c5-5f2d56b77962
+		summarizeBy: none
+		sourceColumn: expected
+
+		annotation SummarizationSetBy = Automatic
+
+	column detected_by
+		dataType: string
+		lineageTag: 271f7aaa-f207-4f49-9220-3c8f68d6d2a7
+		summarizeBy: none
+		sourceColumn: detected_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column detected
+		dataType: boolean
+		lineageTag: 02a52bc3-24a9-4b1c-9e9c-d78b675f01c0
+		summarizeBy: none
+		sourceColumn: detected
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_hit
+		dataType: boolean
+		lineageTag: 856799c0-529a-48ff-8686-42f216da2ed9
+		summarizeBy: none
+		sourceColumn: expected_hit
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_alerts
+		dataType: int64
+		lineageTag: 16efbbfe-b61a-42e2-acd6-1b55070ea7d9
+		summarizeBy: sum
+		sourceColumn: new_alerts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_fault_eval = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_fault_eval.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"batch_month", type text}, {"fault_type", type text}, {"description", type text}, {"expected", type text}, {"detected_by", type text}, {"detected", type logical}, {"expected_hit", type logical}, {"new_alerts", Int64.Type}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table
+

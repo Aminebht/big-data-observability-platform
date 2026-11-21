@@ -1,0 +1,20 @@
+/// Dossier des tables de résultats produites par le pipeline (chemin absolu terminé par \).
+expression DossierMetriques = "D:\bigdata-dq\data\metrics\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 191f19f7-482c-4e3f-959d-f2b57decdcdb
+
+	annotation PBI_ResultType = Text
+
+/// Lit un CSV UTF-8 du dossier des métriques, promeut les en-têtes et remplace les cellules vides par null.
+expression fnLireCsv =
+		(fichier as text) as table =>
+		let
+		    Dossier = if Text.EndsWith(DossierMetriques, "\") then DossierMetriques else DossierMetriques & "\",
+		    Csv = Csv.Document(File.Contents(Dossier & fichier), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+		    EnTetes = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+		    VidesEnNull = Table.TransformColumns(EnTetes, List.Transform(Table.ColumnNames(EnTetes), each {_, (v) => if v = "" then null else v}))
+		in
+		    VidesEnNull
+	lineageTag: 966352eb-0793-4b90-9b1f-0ef44cd32570
+
+	annotation PBI_ResultType = Function
+

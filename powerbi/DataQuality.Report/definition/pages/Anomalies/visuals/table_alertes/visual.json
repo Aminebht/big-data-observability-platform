@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "table_alertes",
+  "position": {
+    "x": 24,
+    "y": 426,
+    "z": 12000,
+    "height": 278,
+    "width": 760,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "batch_month"
+                }
+              },
+              "queryRef": "fact_alert.batch_month",
+              "nativeQueryRef": "batch_month",
+              "displayName": "Mois"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "severity"
+                }
+              },
+              "queryRef": "fact_alert.severity",
+              "nativeQueryRef": "severity",
+              "displayName": "Sévérité"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "detector_or_rule"
+                }
+              },
+              "queryRef": "fact_alert.detector_or_rule",
+              "nativeQueryRef": "detector_or_rule",
+              "displayName": "Règle / détecteur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "column"
+                }
+              },
+              "queryRef": "fact_alert.column",
+              "nativeQueryRef": "column",
+              "displayName": "Colonne"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "message"
+                }
+              },
+              "queryRef": "fact_alert.message",
+              "nativeQueryRef": "message",
+              "displayName": "Message"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_alert"
+                    }
+                  },
+                  "Property": "planted_fault"
+                }
+              },
+              "queryRef": "fact_alert.planted_fault",
+              "nativeQueryRef": "planted_fault",
+              "displayName": "Défaut injecté"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_alert"
+                  }
+                },
+                "Property": "batch_month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Alertes générées'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Alertes générées'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

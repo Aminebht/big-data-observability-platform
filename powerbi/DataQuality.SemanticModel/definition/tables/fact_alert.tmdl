@@ -1,0 +1,147 @@
+/// Alertes générées (une ligne par lot ; une alerte récurrente garde le même alert_id).
+table fact_alert
+	lineageTag: 1f3b99e6-b445-4c82-bc2b-ec12d6e23e1e
+
+	column run_id
+		dataType: string
+		lineageTag: 2d0d0b6b-3e28-4166-9cbb-87267af51e54
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column alert_id
+		dataType: string
+		lineageTag: 38439620-f532-41d3-913c-52f862b5ceee
+		summarizeBy: none
+		sourceColumn: alert_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_id
+		dataType: int64
+		lineageTag: ead4d1e5-9749-4e30-9563-481d9546f342
+		summarizeBy: none
+		sourceColumn: batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_month
+		dataType: string
+		lineageTag: 6b6d8b1f-6db8-4bfb-9756-f81c1b9cc8af
+		summarizeBy: none
+		sourceColumn: batch_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 1b7c7663-3e3d-4375-bfce-ca08e2cd6abd
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column detector_or_rule
+		dataType: string
+		lineageTag: 3ccf7461-6cec-4684-b610-51662520ebdb
+		summarizeBy: none
+		sourceColumn: detector_or_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column column
+		dataType: string
+		lineageTag: effcd7f3-58c6-4b23-a197-5ab463687568
+		summarizeBy: none
+		sourceColumn: column
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 800ae28d-2309-4c99-a3b8-13865453834f
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: 0.00
+		lineageTag: e9ca62cb-54a4-476f-9261-5f5dda01a88a
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column threshold
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0d7530b3-63f2-47fa-b5cf-bf10d9bceb08
+		summarizeBy: sum
+		sourceColumn: threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column message
+		dataType: string
+		lineageTag: 3df09acd-7218-44fb-90ee-4ad5b613e2ee
+		summarizeBy: none
+		sourceColumn: message
+
+		annotation SummarizationSetBy = Automatic
+
+	column occurrences
+		dataType: int64
+		lineageTag: e547c6f4-9b3c-483e-918e-c82ab8667785
+		summarizeBy: sum
+		sourceColumn: occurrences
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_batch
+		dataType: string
+		lineageTag: e27ac0ad-dab4-4b81-8e80-6c7189e33485
+		summarizeBy: none
+		sourceColumn: first_batch
+
+		annotation SummarizationSetBy = Automatic
+
+	column planted_fault
+		dataType: string
+		lineageTag: 1fb76c8f-bd12-4883-82c1-3ad79af4ab5f
+		summarizeBy: none
+		sourceColumn: planted_fault
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: string
+		lineageTag: 3754a9cc-41ca-407d-8885-81186a83ac56
+		summarizeBy: none
+		sourceColumn: created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatchKey
+		dataType: string
+		isHidden
+		lineageTag: d469b7e4-8d57-4289-9c43-d11d13fe2c54
+		summarizeBy: none
+		sourceColumn: BatchKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_alert = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_alert.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"run_id", type text}, {"alert_id", type text}, {"batch_id", Int64.Type}, {"batch_month", type text}, {"source", type text}, {"detector_or_rule", type text}, {"column", type text}, {"severity", type text}, {"value", type number}, {"threshold", type number}, {"message", type text}, {"occurrences", Int64.Type}, {"first_batch", type text}, {"planted_fault", type text}, {"created_at", type text}}, "en-US"),
+				    AjoutCle = Table.AddColumn(Types, "BatchKey", each [run_id] & "|" & [batch_month], type text)
+				in
+				    AjoutCle
+
+	annotation PBI_ResultType = Table
+

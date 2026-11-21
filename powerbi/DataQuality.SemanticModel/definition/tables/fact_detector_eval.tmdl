@@ -1,0 +1,56 @@
+/// Évaluation : vrais et faux positifs par règle / détecteur.
+table fact_detector_eval
+	lineageTag: 4ec3c71d-6346-4df2-9335-91eae11038ac
+
+	column detector_or_rule
+		dataType: string
+		lineageTag: 36b13170-3b63-4ddb-b1f9-4e7ee88cc4ec
+		summarizeBy: none
+		sourceColumn: detector_or_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column tp
+		dataType: int64
+		lineageTag: 4f9ade98-2289-4636-80d8-75da1bd79f1e
+		summarizeBy: sum
+		sourceColumn: tp
+
+		annotation SummarizationSetBy = Automatic
+
+	column total
+		dataType: int64
+		lineageTag: a3f91798-5aba-4571-b60a-942519b14f02
+		summarizeBy: sum
+		sourceColumn: total
+
+		annotation SummarizationSetBy = Automatic
+
+	column fp
+		dataType: int64
+		lineageTag: 3d0c8a03-b512-4a9c-b984-d163ccd1a377
+		summarizeBy: sum
+		sourceColumn: fp
+
+		annotation SummarizationSetBy = Automatic
+
+	column precision
+		dataType: double
+		formatString: 0.00
+		lineageTag: e45901fd-6a7a-4246-b796-b13a5bcc36e0
+		summarizeBy: sum
+		sourceColumn: precision
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_detector_eval = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_detector_eval.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"detector_or_rule", type text}, {"tp", Int64.Type}, {"total", Int64.Type}, {"fp", Int64.Type}, {"precision", type number}}, "en-US")
+				in
+				    Types
+
+	annotation PBI_ResultType = Table
+

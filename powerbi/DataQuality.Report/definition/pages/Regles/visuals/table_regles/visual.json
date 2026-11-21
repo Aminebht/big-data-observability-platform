@@ -1,0 +1,201 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "table_regles",
+  "position": {
+    "x": 24,
+    "y": 456,
+    "z": 12000,
+    "height": 248,
+    "width": 1232,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_rule_result"
+                    }
+                  },
+                  "Property": "rule_id"
+                }
+              },
+              "queryRef": "fact_rule_result.rule_id",
+              "nativeQueryRef": "rule_id",
+              "displayName": "Règle"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_rule"
+                    }
+                  },
+                  "Property": "Dimension qualité"
+                }
+              },
+              "queryRef": "dim_rule.Dimension qualité",
+              "nativeQueryRef": "Dimension qualité",
+              "displayName": "Dimension"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_rule"
+                    }
+                  },
+                  "Property": "severity"
+                }
+              },
+              "queryRef": "dim_rule.severity",
+              "nativeQueryRef": "severity",
+              "displayName": "Sévérité"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_rule"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "dim_rule.description",
+              "nativeQueryRef": "description",
+              "displayName": "Contrôle"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Lignes contrôlées"
+                }
+              },
+              "queryRef": "_Mesures.Lignes contrôlées",
+              "nativeQueryRef": "Lignes contrôlées"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Erreurs détectées"
+                }
+              },
+              "queryRef": "_Mesures.Erreurs détectées",
+              "nativeQueryRef": "Erreurs détectées"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Taux de conformité"
+                }
+              },
+              "queryRef": "_Mesures.Taux de conformité",
+              "nativeQueryRef": "Taux de conformité"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Règles en échec"
+                }
+              },
+              "queryRef": "_Mesures.Règles en échec",
+              "nativeQueryRef": "Règles en échec",
+              "displayName": "Lots en échec"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Mesures"
+                  }
+                },
+                "Property": "Erreurs détectées"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Détail des règles'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Détail des règles'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

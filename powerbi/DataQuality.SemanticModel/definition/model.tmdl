@@ -1,0 +1,28 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DossierMetriques", "fnLireCsv", "dim_batch", "fact_rule_result", "fact_column_completeness", "fact_drift", "fact_alert", "dim_rule", "fact_run", "fact_fault_eval", "fact_detector_eval", "dim_run", "_Mesures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table _Mesures
+ref table dim_batch
+ref table fact_rule_result
+ref table fact_column_completeness
+ref table fact_drift
+ref table fact_alert
+ref table dim_rule
+ref table fact_run
+ref table fact_fault_eval
+ref table fact_detector_eval
+ref table dim_run
+
+ref cultureInfo fr-FR
+

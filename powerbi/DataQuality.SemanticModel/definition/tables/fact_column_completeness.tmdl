@@ -1,0 +1,91 @@
+/// Complétude de chaque attribut sur chaque lot.
+table fact_column_completeness
+	lineageTag: c131d2c7-8af5-4e8e-a549-1af2c93e66a1
+
+	column run_id
+		dataType: string
+		lineageTag: e05e738b-e0c1-427a-abb4-6b9c759d6685
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_id
+		dataType: int64
+		lineageTag: 2f4e01f1-5c3f-4c31-8ca1-3a359bece310
+		summarizeBy: none
+		sourceColumn: batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_month
+		dataType: string
+		lineageTag: 00f7cdf0-1810-4147-adf7-f26e91db3e44
+		summarizeBy: none
+		sourceColumn: batch_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column column
+		dataType: string
+		lineageTag: 6586ad75-2eac-4ede-b0f4-bf41667cd5fd
+		summarizeBy: none
+		sourceColumn: column
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows
+		dataType: int64
+		lineageTag: 4ce957b5-242a-441b-b9a4-f1c8c0b548de
+		summarizeBy: sum
+		sourceColumn: rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing
+		dataType: int64
+		lineageTag: 65baea45-47c6-4498-976b-470f5f51ad1a
+		summarizeBy: sum
+		sourceColumn: missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: ffe86aff-972f-437c-9401-41498a74f89b
+		summarizeBy: sum
+		sourceColumn: missing_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column completeness_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: 371e4727-883d-4c25-a8ce-d0a078ab0eaf
+		summarizeBy: sum
+		sourceColumn: completeness_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatchKey
+		dataType: string
+		isHidden
+		lineageTag: 5a4b83b3-8303-416f-835b-c47c04027ad5
+		summarizeBy: none
+		sourceColumn: BatchKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_column_completeness = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("fact_column_completeness.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"run_id", type text}, {"batch_id", Int64.Type}, {"batch_month", type text}, {"column", type text}, {"rows", Int64.Type}, {"missing", Int64.Type}, {"missing_rate", type number}, {"completeness_rate", type number}}, "en-US"),
+				    AjoutCle = Table.AddColumn(Types, "BatchKey", each [run_id] & "|" & [batch_month], type text)
+				in
+				    AjoutCle
+
+	annotation PBI_ResultType = Table
+

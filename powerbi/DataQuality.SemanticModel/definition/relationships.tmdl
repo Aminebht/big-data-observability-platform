@@ -1,0 +1,24 @@
+relationship fact_rule_result_dim_batch_BatchKey
+	fromColumn: fact_rule_result.BatchKey
+	toColumn: dim_batch.BatchKey
+
+relationship fact_column_completeness_dim_batch_BatchKey
+	fromColumn: fact_column_completeness.BatchKey
+	toColumn: dim_batch.BatchKey
+
+relationship fact_drift_dim_batch_BatchKey
+	fromColumn: fact_drift.BatchKey
+	toColumn: dim_batch.BatchKey
+
+relationship fact_alert_dim_batch_BatchKey
+	fromColumn: fact_alert.BatchKey
+	toColumn: dim_batch.BatchKey
+
+relationship fact_rule_result_dim_rule_rule_id
+	fromColumn: fact_rule_result.rule_id
+	toColumn: dim_rule.rule_id
+
+relationship dim_batch_dim_run_run_id
+	fromColumn: dim_batch.run_id
+	toColumn: dim_run.run_id
+

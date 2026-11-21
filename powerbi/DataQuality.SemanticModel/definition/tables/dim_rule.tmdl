@@ -1,0 +1,97 @@
+/// Catalogue des règles (config/rules.yaml).
+table dim_rule
+	lineageTag: 0fd7ef65-e8ee-4dbd-a3fb-059086d41a63
+
+	column rule_id
+		dataType: string
+		lineageTag: 5e644ab9-2964-48f8-9969-484d0281826f
+		summarizeBy: none
+		sourceColumn: rule_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column dimension
+		dataType: string
+		lineageTag: 797e396e-8d01-4bbc-8286-41611be83965
+		summarizeBy: none
+		sourceColumn: dimension
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 92ce525e-38e4-4dd0-92df-f417c0ff956f
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column columns
+		dataType: string
+		lineageTag: 668c866c-5612-4e5a-889e-d8b615596372
+		summarizeBy: none
+		sourceColumn: columns
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: abe32541-384a-4a74-b9ea-6136917e87b7
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column critical
+		dataType: boolean
+		lineageTag: 2232d024-f2e3-4c54-934b-b3c2f9d69f41
+		summarizeBy: none
+		sourceColumn: critical
+
+		annotation SummarizationSetBy = Automatic
+
+	column mode
+		dataType: string
+		lineageTag: e32053ef-9861-44ca-a9bd-9d79de8afcf2
+		summarizeBy: none
+		sourceColumn: mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_fail_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: a7abf636-0c0a-4110-8ac4-5c37a51bd8ea
+		summarizeBy: sum
+		sourceColumn: max_fail_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 10604aef-827d-45fe-be1e-8f067c94b42b
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dimension qualité'
+		dataType: string
+		lineageTag: 95d58e42-b6f1-4441-b93c-8cd0fb58b411
+		summarizeBy: none
+		sourceColumn: Dimension qualité
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_rule = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("dim_rule.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"rule_id", type text}, {"dimension", type text}, {"type", type text}, {"columns", type text}, {"severity", type text}, {"critical", type logical}, {"mode", type text}, {"max_fail_rate", type number}, {"description", type text}}, "en-US"),
+				    AjoutDimension = Table.AddColumn(Types, "Dimension qualité", each Record.FieldOrDefault([completeness = "Complétude", uniqueness = "Unicité", validity = "Validité", consistency = "Cohérence", conformity = "Conformité"], [dimension], [dimension]), type text)
+				in
+				    AjoutDimension
+
+	annotation PBI_ResultType = Table
+

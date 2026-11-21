@@ -1,0 +1,22 @@
+/// Exécutions de surveillance (clean = données d'origine, faulty = 12 lots abîmés volontairement).
+table dim_run
+	lineageTag: 7a6366be-b812-4d5b-9a91-f4a2da800a4b
+
+	column run_id
+		dataType: string
+		lineageTag: e6faafb0-0318-494d-a0b7-685bdd8ff044
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_run = m
+		mode: import
+		source =
+				let
+				    Source = Table.Distinct(Table.SelectColumns(dim_batch, {"run_id"}))
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

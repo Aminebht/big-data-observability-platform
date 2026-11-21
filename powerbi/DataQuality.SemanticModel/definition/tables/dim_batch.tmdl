@@ -1,0 +1,215 @@
+/// Un lot mensuel traité par le flux : volume, scores par dimension, statut, défaut injecté.
+table dim_batch
+	lineageTag: a30dc095-8fcc-4100-bad3-24ccd73d0542
+
+	column run_id
+		dataType: string
+		lineageTag: 634fb283-5e16-4c7c-b784-8e8c449833a2
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_id
+		dataType: int64
+		lineageTag: ffb4d2e0-16d1-4ff5-a91f-0da2f218d937
+		summarizeBy: none
+		sourceColumn: batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column batch_month
+		dataType: string
+		lineageTag: 8c6a6912-1114-4c49-8896-2051c6741ba4
+		summarizeBy: none
+		sourceColumn: batch_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column rows
+		dataType: int64
+		lineageTag: bb61e96c-5651-47a1-a33a-d35e7e74c889
+		summarizeBy: sum
+		sourceColumn: rows
+
+		annotation SummarizationSetBy = Automatic
+
+	column processed_at
+		dataType: string
+		lineageTag: 6dbe2d86-2be4-42f1-9e8a-910b6a1f6af0
+		summarizeBy: none
+		sourceColumn: processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_s
+		dataType: double
+		formatString: 0.00
+		lineageTag: 55df456d-3408-4837-88b7-2285d0f31a17
+		summarizeBy: sum
+		sourceColumn: duration_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column global_score
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0082540d-5601-4596-9bbe-93ff65a9c9b7
+		summarizeBy: sum
+		sourceColumn: global_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: bad31d31-c0db-4e4c-a275-fff77471356e
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column forced_reasons
+		dataType: string
+		lineageTag: cc74f190-1f07-4d41-b84e-04f9420c7cf9
+		summarizeBy: none
+		sourceColumn: forced_reasons
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_completeness
+		dataType: double
+		formatString: 0.00
+		lineageTag: 065a7184-930f-4363-a66c-9ebebf4f2812
+		summarizeBy: sum
+		sourceColumn: score_completeness
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_uniqueness
+		dataType: double
+		formatString: 0.00
+		lineageTag: ddeae964-13f8-4e9e-b7b4-955bad90c890
+		summarizeBy: sum
+		sourceColumn: score_uniqueness
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_validity
+		dataType: double
+		formatString: 0.00
+		lineageTag: e15ebbc2-7674-4989-9610-2b31ce0b66cf
+		summarizeBy: sum
+		sourceColumn: score_validity
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_consistency
+		dataType: double
+		formatString: 0.00
+		lineageTag: b899229c-e35d-47a7-87c3-91b947dce51f
+		summarizeBy: sum
+		sourceColumn: score_consistency
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_conformity
+		dataType: double
+		formatString: 0.00
+		lineageTag: d276718c-7fec-4b4d-aa97-a963ccdddc4a
+		summarizeBy: sum
+		sourceColumn: score_conformity
+
+		annotation SummarizationSetBy = Automatic
+
+	column schema_changed
+		dataType: boolean
+		lineageTag: da8b9e1a-80bd-4d0d-a4a1-32fdb6b98e84
+		summarizeBy: none
+		sourceColumn: schema_changed
+
+		annotation SummarizationSetBy = Automatic
+
+	column missing_columns
+		dataType: string
+		lineageTag: e55df8ce-670a-47bc-bb7e-d60c5851946c
+		summarizeBy: none
+		sourceColumn: missing_columns
+
+		annotation SummarizationSetBy = Automatic
+
+	column extra_columns
+		dataType: string
+		lineageTag: 582bf323-34b4-4601-aea2-5321601c1592
+		summarizeBy: none
+		sourceColumn: extra_columns
+
+		annotation SummarizationSetBy = Automatic
+
+	column planted_faults
+		dataType: string
+		lineageTag: eea21b8b-5dcb-46c9-9fe6-578bf340a8db
+		summarizeBy: none
+		sourceColumn: planted_faults
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 27bc8a05-a237-408c-b0f5-e3f179efade4
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Annee
+		dataType: string
+		lineageTag: 9692f584-7bd2-4957-9ce3-2ccad0b69bde
+		summarizeBy: none
+		sourceColumn: Annee
+
+		annotation SummarizationSetBy = Automatic
+
+	column Statut
+		dataType: string
+		lineageTag: fada0cd0-3ce8-41cf-90e6-be03d94c736a
+		summarizeBy: none
+		sourceColumn: Statut
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Defaut injecte'
+		dataType: string
+		lineageTag: ce244fa0-0df2-487d-8685-9034e4aa7a58
+		summarizeBy: none
+		sourceColumn: Defaut injecte
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatchKey
+		dataType: string
+		isHidden
+		lineageTag: 90c41404-60dc-49eb-836d-17de137039c7
+		summarizeBy: none
+		sourceColumn: BatchKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_batch = m
+		mode: import
+		source =
+				let
+				    Source = fnLireCsv("dim_batch.csv"),
+				    Types = Table.TransformColumnTypes(Source, {{"run_id", type text}, {"batch_id", Int64.Type}, {"batch_month", type text}, {"rows", Int64.Type}, {"processed_at", type text}, {"duration_s", type number}, {"global_score", type number}, {"status", type text}, {"forced_reasons", type text}, {"score_completeness", type number}, {"score_uniqueness", type number}, {"score_validity", type number}, {"score_consistency", type number}, {"score_conformity", type number}, {"schema_changed", type logical}, {"missing_columns", type text}, {"extra_columns", type text}, {"planted_faults", type text}}, "en-US"),
+				    AjoutDate = Table.AddColumn(Types, "Date", each Date.FromText([batch_month] & "-01"), type date),
+				    AjoutAnnee = Table.AddColumn(AjoutDate, "Annee", each Text.Start([batch_month], 4), type text),
+				    AjoutStatut = Table.AddColumn(AjoutAnnee, "Statut", each if [status] = "healthy" then "Sain" else if [status] = "warning" then "Avertissement" else "Critique", type text),
+				    AjoutDefaut = Table.AddColumn(AjoutStatut, "Defaut injecte", each if [planted_faults] = null then "—" else [planted_faults], type text),
+				    AjoutCle = Table.AddColumn(AjoutDefaut, "BatchKey", each [run_id] & "|" & [batch_month], type text)
+				in
+				    AjoutCle
+
+	annotation PBI_ResultType = Table
+
