@@ -1,0 +1,27 @@
+rule_id,dimension,type,columns,severity,critical,mode,max_fail_rate,description
+CMP_KEY_FIELDS,completeness,not_null,"ID, Severity, Start_Time, Start_Lat, Start_Lng, State",high,True,score,0.0,Les champs clés ne doivent jamais être vides
+CMP_LOCATION,completeness,not_null,"City, Zipcode, Timezone",medium,False,score,0.01,Les champs de localisation sont vides dans au plus 1 % des lignes
+CMP_WEATHER_CORE,completeness,not_null,"Temperature_F, Humidity_pct, Pressure_in, Visibility_mi, Weather_Condition",medium,False,score,0.05,Les mesures météo principales sont vides dans au plus 5 % des lignes
+CMP_WEATHER_OPT,completeness,not_null,"Wind_Chill_F, Precipitation_in",low,False,monitor,0.0,"Champs météo optionnels, souvent vides par nature (suivi de dérive uniquement)"
+CMP_END_COORDS,completeness,not_null,"End_Lat, End_Lng",low,False,monitor,0.0,"Coordonnées de fin, vides dans ~44 % des lignes (suivi de dérive uniquement)"
+UNQ_ID,uniqueness,unique,ID,high,True,score,0.0,L'identifiant ID est unique
+UNQ_EVENT,uniqueness,unique,"Start_Time, Start_Lat, Start_Lng, Description",medium,False,score,0.08,"Pas deux lignes pour le même événement (même heure, lieu et description)"
+VAL_SEVERITY,validity,in_range,Severity,high,False,score,0.0,La gravité est comprise entre 1 et 4
+VAL_LAT_LNG,validity,expression,,high,False,score,0.0,Les coordonnées sont dans les limites des États-Unis continentaux
+VAL_TEMP,validity,in_range,Temperature_F,medium,False,score,0.0005,Température physiquement plausible (-80 à 140 °F)
+VAL_HUMIDITY,validity,in_range,Humidity_pct,medium,False,score,0.0,Humidité entre 0 et 100 %
+VAL_PRESSURE,validity,in_range,Pressure_in,low,False,score,0.001,Pression atmosphérique (station) entre 15 et 32 inHg
+VAL_VISIBILITY_WIND,validity,expression,,low,False,score,0.001,Visibilité entre 0 et 100 mi et vent entre 0 et 200 mph
+VAL_DISTANCE,validity,in_range,Distance_mi,medium,False,score,0.0,Longueur de route affectée entre 0 et 500 mi
+VAL_STATE,validity,allowed_values,State,high,False,score,0.0,Code d'État parmi les 48 États continentaux + DC
+CNS_TIME_ORDER,consistency,expression,,high,False,score,0.0,La fin de l'accident est postérieure à son début
+CNS_DURATION,consistency,expression,,low,False,score,0.001,La durée de l'impact est inférieure à 30 jours
+CNS_WEATHER_TS,consistency,expression,,low,False,score,0.02,L'observation météo est à moins de 2 h du début de l'accident
+CNS_WINDCHILL,consistency,expression,,low,False,score,0.001,La température ressentie (wind chill) ne dépasse pas la température
+CNS_TWILIGHT,consistency,expression,,medium,False,score,0.001,"Si le soleil est levé, le crépuscule civil ne peut pas être « Night »"
+CNS_ZERO_DIST,consistency,expression,,low,False,score,0.01,Distance nulle implique coordonnées de fin absentes ou égales au début
+CNF_ID_FORMAT,conformity,regex,ID,medium,False,score,0.0,ID au format A-<chiffres>
+CNF_ZIPCODE,conformity,regex,Zipcode,low,False,score,0.001,Code postal au format 12345 ou 12345-6789
+CNF_TIMESTAMP,conformity,regex,"Start_Time, End_Time",medium,False,score,0.0,Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes)
+CNF_BOOLEANS,conformity,regex,"Amenity, Bump, Crossing, Give_Way, Junction, No_Exit, Railway, Roundabout, Station, Stop, Traffic_Calming, Traffic_Signal, Turning_Loop",low,False,score,0.0,Les indicateurs routiers valent uniquement True ou False
+CNF_DAY_NIGHT,conformity,allowed_values,"Sunrise_Sunset, Civil_Twilight, Nautical_Twilight, Astronomical_Twilight",low,False,score,0.0,Les indicateurs jour/nuit valent uniquement Day ou Night

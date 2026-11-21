@@ -1,0 +1,281 @@
+run_id,alert_id,batch_id,batch_month,source,detector_or_rule,column,severity,value,threshold,message,occurrences,first_batch,planted_fault,created_at
+faulty,faulty-001-01,1,2016-01,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.571429,0.08,"4 lignes en échec (57.14 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2016-01,,2026-11-21 10:50:30
+faulty,faulty-001-02,1,2016-01,rule,CNS_DURATION,,INFO,1,0.001,7 lignes en échec (100.00 %) – La durée de l'impact est inférieure à 30 jours,1,2016-01,,2026-11-21 10:50:30
+faulty,faulty-013-01,13,2017-01,detector,numeric_drift,Temperature_F,WARNING,0.455244,0.25,psi = 0.455 (seuil 0.25),1,2017-01,,2026-11-21 10:51:54
+faulty,faulty-015-01,15,2017-03,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.414743,0.05,23771 lignes en échec (41.47 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2017-03,missing_spike,2026-11-21 10:52:10
+faulty,faulty-015-02,15,2017-03,detector,missing_drift,Temperature_F,WARNING,0.391717,0.1,delta_points = 0.392 (seuil 0.1),1,2017-03,missing_spike,2026-11-21 10:52:10
+faulty,faulty-019-01,19,2017-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0185613,0,803 lignes en échec (1.86 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2017-07,,2026-11-21 10:52:35
+faulty,faulty-020-01,20,2017-08,detector,categorical_drift,State,WARNING,0.274702,0.2,jensen_shannon = 0.275 (seuil 0.2),1,2017-08,,2026-11-21 10:52:43
+faulty,faulty-021-01,21,2017-09,rule,UNQ_ID,ID,CRITICAL,0.0476179,0,3845 lignes en échec (4.76 %) – L'identifiant ID est unique,1,2017-09,duplicates,2026-11-21 10:52:52
+faulty,faulty-026-01,26,2018-02,rule,VAL_SEVERITY,Severity,CRITICAL,0.00993919,0,711 lignes en échec (0.99 %) – La gravité est comprise entre 1 et 4,1,2018-02,out_of_range,2026-11-21 10:53:32
+faulty,faulty-026-02,26,2018-02,rule,VAL_LAT_LNG,,CRITICAL,0.0102747,0,735 lignes en échec (1.03 %) – Les coordonnées sont dans les limites des États-Unis continentaux,1,2018-02,out_of_range,2026-11-21 10:53:32
+faulty,faulty-026-03,26,2018-02,rule,VAL_TEMP,Temperature_F,WARNING,0.020289,0.0005,1432 lignes en échec (2.03 %) – Température physiquement plausible (-80 à 140 °F),1,2018-02,out_of_range,2026-11-21 10:53:32
+faulty,faulty-026-04,26,2018-02,detector,outliers,Temperature_F,WARNING,0.0266081,0.0257194,iqr = 0.027 (seuil 0.0257),1,2018-02,out_of_range,2026-11-21 10:53:32
+faulty,faulty-030-01,30,2018-06,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0798308,0.05,5415 lignes en échec (7.98 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2018-06,,2026-11-21 10:54:03
+faulty,faulty-032-01,32,2018-08,rule,CNS_TIME_ORDER,,CRITICAL,0.0289262,0,2211 lignes en échec (2.89 %) – La fin de l'accident est postérieure à son début,1,2018-08,inconsistency,2026-11-21 10:54:18
+faulty,faulty-032-02,32,2018-08,rule,CNS_TWILIGHT,,WARNING,0.0304049,0.001,"2324 lignes en échec (3.04 %) – Si le soleil est levé, le crépuscule civil ne peut pas être « Night »",1,2018-08,inconsistency,2026-11-21 10:54:18
+faulty,faulty-039-01,39,2019-03,rule,CNF_ZIPCODE,Zipcode,INFO,0.0311019,0.001,2159 lignes en échec (3.11 %) – Code postal au format 12345 ou 12345-6789,1,2019-03,format,2026-11-21 10:55:14
+faulty,faulty-039-02,39,2019-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0292783,0,2033 lignes en échec (2.93 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2019-03,format,2026-11-21 10:55:14
+faulty,faulty-040-01,40,2019-04,detector,numeric_drift,Pressure_in,WARNING,2.68976,0.35,psi = 2.690 (seuil 0.35),1,2019-04,,2026-11-21 10:55:22
+faulty,faulty-040-02,40,2019-04,detector,numeric_drift,Wind_Speed_mph,WARNING,1.02024,0.25,psi = 1.020 (seuil 0.25),1,2019-04,,2026-11-21 10:55:22
+faulty,faulty-040-03,40,2019-04,detector,numeric_drift,Precipitation_in,WARNING,1.11687,0.25,psi = 1.117 (seuil 0.25),1,2019-04,,2026-11-21 10:55:22
+faulty,faulty-040-04,40,2019-04,detector,categorical_drift,Weather_Condition,WARNING,0.779869,0.5,jensen_shannon = 0.780 (seuil 0.5),1,2019-04,,2026-11-21 10:55:22
+faulty,faulty-040-01,41,2019-05,detector,numeric_drift,Pressure_in,WARNING,1.38804,0.35,psi = 1.388 (seuil 0.35),2,2019-04,,2026-11-21 10:55:29
+faulty,faulty-040-04,41,2019-05,detector,categorical_drift,Weather_Condition,WARNING,0.528281,0.5,jensen_shannon = 0.528 (seuil 0.5),2,2019-04,,2026-11-21 10:55:29
+faulty,faulty-040-01,42,2019-06,detector,numeric_drift,Pressure_in,WARNING,0.646984,0.35,psi = 0.647 (seuil 0.35),3,2019-04,,2026-11-21 10:55:37
+faulty,faulty-043-01,43,2019-07,schema,SCHEMA,,CRITICAL,1,0,colonnes manquantes : Weather_Condition ; colonnes inattendues : Weather,1,2019-07,schema_rename,2026-11-21 10:55:45
+faulty,faulty-043-02,43,2019-07,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,1,0.05,68257 lignes en échec (100.00 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2019-07,schema_rename,2026-11-21 10:55:45
+faulty,faulty-043-03,43,2019-07,detector,categorical_drift,Weather_Condition,WARNING,0.941114,0.5,jensen_shannon = 0.941 (seuil 0.5),1,2019-07,schema_rename,2026-11-21 10:55:45
+faulty,faulty-043-04,43,2019-07,detector,missing_drift,Weather_Condition,WARNING,0.981815,0.1,delta_points = 0.982 (seuil 0.1),1,2019-07,schema_rename,2026-11-21 10:55:45
+faulty,faulty-046-01,46,2019-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,9.35322e-06,0,1 lignes en échec (0.00 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2019-10,,2026-11-21 10:56:11
+faulty,faulty-048-01,48,2019-12,detector,volume,,CRITICAL,-20.4003,5,robust_z_log = -20.400 (seuil 5),1,2019-12,volume_drop,2026-11-21 10:56:24
+faulty,faulty-053-01,53,2020-05,rule,CNS_TIME_ORDER,,CRITICAL,0.170123,0,44762 lignes en échec (17.01 %) – La fin de l'accident est postérieure à son début,1,2020-05,volume_spike,2026-11-21 10:57:20
+faulty,faulty-053-02,53,2020-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,5.70093e-05,0,15 lignes en échec (0.01 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2020-05,volume_spike,2026-11-21 10:57:20
+faulty,faulty-053-03,53,2020-05,detector,volume,,WARNING,7.66944,5,robust_z_log = 7.669 (seuil 5),1,2020-05,volume_spike,2026-11-21 10:57:20
+faulty,faulty-053-02,54,2020-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,9.95312e-06,0,1 lignes en échec (0.00 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),2,2020-05,,2026-11-21 10:57:31
+faulty,faulty-055-01,55,2020-07,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0502711,0.05,1771 lignes en échec (5.03 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2020-07,,2026-11-21 10:57:37
+faulty,faulty-053-02,55,2020-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,5.67714e-05,0,2 lignes en échec (0.01 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),3,2020-05,,2026-11-21 10:57:37
+faulty,faulty-055-02,55,2020-07,detector,volume,,WARNING,-6.02533,5,robust_z_log = -6.025 (seuil 5),1,2020-07,,2026-11-21 10:57:37
+faulty,faulty-055-03,55,2020-07,detector,categorical_drift,Source,WARNING,0.32714,0.25,jensen_shannon = 0.327 (seuil 0.25),1,2020-07,,2026-11-21 10:57:37
+faulty,faulty-055-04,55,2020-07,detector,missing_drift,End_Lat,WARNING,0.435075,0.3,delta_points = 0.435 (seuil 0.3),1,2020-07,,2026-11-21 10:57:37
+faulty,faulty-055-05,55,2020-07,detector,missing_drift,End_Lng,WARNING,0.435075,0.3,delta_points = 0.435 (seuil 0.3),1,2020-07,,2026-11-21 10:57:37
+faulty,faulty-053-02,56,2020-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.000616292,0,23 lignes en échec (0.06 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),4,2020-05,,2026-11-21 10:57:43
+faulty,faulty-055-02,56,2020-08,detector,volume,,WARNING,-5.64042,5,robust_z_log = -5.640 (seuil 5),2,2020-07,,2026-11-21 10:57:43
+faulty,faulty-055-03,56,2020-08,detector,categorical_drift,Source,WARNING,0.373576,0.25,jensen_shannon = 0.374 (seuil 0.25),2,2020-07,,2026-11-21 10:57:43
+faulty,faulty-055-04,56,2020-08,detector,missing_drift,End_Lat,WARNING,0.410071,0.3,delta_points = 0.410 (seuil 0.3),2,2020-07,,2026-11-21 10:57:43
+faulty,faulty-055-05,56,2020-08,detector,missing_drift,End_Lng,WARNING,0.410071,0.3,delta_points = 0.410 (seuil 0.3),2,2020-07,,2026-11-21 10:57:43
+faulty,faulty-057-01,57,2020-09,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.125981,0.08,"10688 lignes en échec (12.60 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2020-09,,2026-11-21 10:57:51
+faulty,faulty-057-02,57,2020-09,rule,CNS_DURATION,,INFO,0.00198024,0.001,168 lignes en échec (0.20 %) – La durée de l'impact est inférieure à 30 jours,1,2020-09,,2026-11-21 10:57:51
+faulty,faulty-053-02,57,2020-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0227021,0,1926 lignes en échec (2.27 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),5,2020-05,,2026-11-21 10:57:51
+faulty,faulty-057-03,57,2020-09,detector,numeric_drift,Distance_mi,WARNING,0.614234,0.4,psi = 0.614 (seuil 0.4),1,2020-09,,2026-11-21 10:57:51
+faulty,faulty-057-01,58,2020-10,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.146311,0.08,"19149 lignes en échec (14.63 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",2,2020-09,category_shift,2026-11-21 10:58:03
+faulty,faulty-057-02,58,2020-10,rule,CNS_DURATION,,INFO,0.00274299,0.001,359 lignes en échec (0.27 %) – La durée de l'impact est inférieure à 30 jours,2,2020-09,category_shift,2026-11-21 10:58:03
+faulty,faulty-053-02,58,2020-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0276057,0,3613 lignes en échec (2.76 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),6,2020-05,category_shift,2026-11-21 10:58:03
+faulty,faulty-057-03,58,2020-10,detector,numeric_drift,Distance_mi,WARNING,0.474953,0.4,psi = 0.475 (seuil 0.4),2,2020-09,category_shift,2026-11-21 10:58:03
+faulty,faulty-058-01,58,2020-10,detector,categorical_drift,Weather_Condition,WARNING,0.609959,0.5,jensen_shannon = 0.610 (seuil 0.5),1,2020-10,category_shift,2026-11-21 10:58:03
+faulty,faulty-058-02,58,2020-10,detector,categorical_drift,Source,WARNING,0.279701,0.25,jensen_shannon = 0.280 (seuil 0.25),1,2020-10,category_shift,2026-11-21 10:58:03
+faulty,faulty-058-03,58,2020-10,detector,categorical_drift,Sunrise_Sunset,WARNING,0.155423,0.15,jensen_shannon = 0.155 (seuil 0.15),1,2020-10,category_shift,2026-11-21 10:58:03
+faulty,faulty-059-01,59,2020-11,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0562433,0.05,9687 lignes en échec (5.62 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2020-11,,2026-11-21 10:58:18
+faulty,faulty-057-01,59,2020-11,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.162419,0.08,"27974 lignes en échec (16.24 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",3,2020-09,,2026-11-21 10:58:18
+faulty,faulty-057-02,59,2020-11,rule,CNS_DURATION,,INFO,0.00154441,0.001,266 lignes en échec (0.15 %) – La durée de l'impact est inférieure à 30 jours,3,2020-09,,2026-11-21 10:58:18
+faulty,faulty-059-02,59,2020-11,rule,CNS_WEATHER_TS,,INFO,0.0209065,0.02,3445 lignes en échec (2.09 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2020-11,,2026-11-21 10:58:18
+faulty,faulty-053-02,59,2020-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0328623,0,5660 lignes en échec (3.29 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),7,2020-05,,2026-11-21 10:58:18
+faulty,faulty-058-03,59,2020-11,detector,categorical_drift,Sunrise_Sunset,WARNING,0.159229,0.15,jensen_shannon = 0.159 (seuil 0.15),2,2020-10,,2026-11-21 10:58:18
+faulty,faulty-057-01,60,2020-12,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.164951,0.08,"29436 lignes en échec (16.50 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",4,2020-09,,2026-11-21 10:58:33
+faulty,faulty-057-02,60,2020-12,rule,CNS_DURATION,,INFO,0.0016643,0.001,297 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,4,2020-09,,2026-11-21 10:58:33
+faulty,faulty-053-02,60,2020-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0340986,0,6085 lignes en échec (3.41 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),8,2020-05,,2026-11-21 10:58:33
+faulty,faulty-057-02,61,2021-01,rule,CNS_DURATION,,INFO,0.00194227,0.001,297 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,5,2020-09,,2026-11-21 10:58:46
+faulty,faulty-061-01,61,2021-01,rule,CNS_WEATHER_TS,,INFO,0.0244802,0.02,3659 lignes en échec (2.45 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2021-01,,2026-11-21 10:58:46
+faulty,faulty-053-02,61,2021-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0854467,0,13066 lignes en échec (8.54 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),9,2020-05,,2026-11-21 10:58:46
+faulty,faulty-057-02,62,2021-02,rule,CNS_DURATION,,INFO,0.00171039,0.001,265 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,6,2020-09,,2026-11-21 10:59:00
+faulty,faulty-053-02,62,2021-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0859134,0,13311 lignes en échec (8.59 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),10,2020-05,,2026-11-21 10:59:00
+faulty,faulty-057-02,63,2021-03,rule,CNS_DURATION,,INFO,0.00202994,0.001,184 lignes en échec (0.20 %) – La durée de l'impact est inférieure à 30 jours,7,2020-09,,2026-11-21 10:59:10
+faulty,faulty-053-02,63,2021-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0829849,0,7522 lignes en échec (8.30 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),11,2020-05,,2026-11-21 10:59:10
+faulty,faulty-064-01,64,2021-04,rule,VAL_PRESSURE,Pressure_in,INFO,0.299379,0.001,26783 lignes en échec (29.94 %) – Pression atmosphérique (station) entre 15 et 32 inHg,1,2021-04,unit_change,2026-11-21 10:59:19
+faulty,faulty-057-02,64,2021-04,rule,CNS_DURATION,,INFO,0.00165038,0.001,150 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,8,2020-09,unit_change,2026-11-21 10:59:19
+faulty,faulty-053-02,64,2021-04,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0872062,0,7926 lignes en échec (8.72 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),12,2020-05,unit_change,2026-11-21 10:59:19
+faulty,faulty-064-02,64,2021-04,detector,numeric_drift,Pressure_in,WARNING,0.469706,0.35,psi = 0.470 (seuil 0.35),1,2021-04,unit_change,2026-11-21 10:59:19
+faulty,faulty-057-02,65,2021-05,rule,CNS_DURATION,,INFO,0.00260488,0.001,265 lignes en échec (0.26 %) – La durée de l'impact est inférieure à 30 jours,9,2020-09,,2026-11-21 10:59:29
+faulty,faulty-053-02,65,2021-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0862364,0,8773 lignes en échec (8.62 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),13,2020-05,,2026-11-21 10:59:29
+faulty,faulty-057-02,66,2021-06,rule,CNS_DURATION,,INFO,0.00192436,0.001,253 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,10,2020-09,,2026-11-21 10:59:41
+faulty,faulty-053-02,66,2021-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0982491,0,12917 lignes en échec (9.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),14,2020-05,,2026-11-21 10:59:41
+faulty,faulty-066-01,66,2021-06,detector,numeric_drift,Temperature_F,WARNING,0.37571,0.25,psi = 0.376 (seuil 0.25),1,2021-06,,2026-11-21 10:59:41
+faulty,faulty-057-02,67,2021-07,rule,CNS_DURATION,,INFO,0.0022853,0.001,259 lignes en échec (0.23 %) – La durée de l'impact est inférieure à 30 jours,11,2020-09,,2026-11-21 10:59:53
+faulty,faulty-053-02,67,2021-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0999091,0,11323 lignes en échec (9.99 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),15,2020-05,,2026-11-21 10:59:53
+faulty,faulty-057-02,68,2021-08,rule,CNS_DURATION,,INFO,0.00129894,0.001,157 lignes en échec (0.13 %) – La durée de l'impact est inférieure à 30 jours,12,2020-09,,2026-11-21 11:00:07
+faulty,faulty-053-02,68,2021-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0998858,0,12073 lignes en échec (9.99 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),16,2020-05,,2026-11-21 11:00:07
+faulty,faulty-057-02,69,2021-09,rule,CNS_DURATION,,INFO,0.00176461,0.001,238 lignes en échec (0.18 %) – La durée de l'impact est inférieure à 30 jours,13,2020-09,,2026-11-21 11:00:22
+faulty,faulty-053-02,69,2021-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0981731,0,13241 lignes en échec (9.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),17,2020-05,,2026-11-21 11:00:22
+faulty,faulty-070-01,70,2021-10,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.0839396,0.08,"11272 lignes en échec (8.39 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2021-10,,2026-11-21 11:00:36
+faulty,faulty-057-02,70,2021-10,rule,CNS_DURATION,,INFO,0.00167552,0.001,225 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,14,2020-09,,2026-11-21 11:00:36
+faulty,faulty-053-02,70,2021-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.10097,0,13559 lignes en échec (10.10 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),18,2020-05,,2026-11-21 11:00:36
+faulty,faulty-071-01,71,2021-11,schema,SCHEMA,,CRITICAL,1,0,colonnes manquantes : Humidity_pct,1,2021-11,schema_drop,2026-11-21 11:00:49
+faulty,faulty-071-02,71,2021-11,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,1,0.05,157729 lignes en échec (100.00 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2021-11,schema_drop,2026-11-21 11:00:49
+faulty,faulty-070-01,71,2021-11,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.0918284,0.08,"14484 lignes en échec (9.18 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",2,2021-10,schema_drop,2026-11-21 11:00:49
+faulty,faulty-057-02,71,2021-11,rule,CNS_DURATION,,INFO,0.00194004,0.001,306 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,15,2020-09,schema_drop,2026-11-21 11:00:49
+faulty,faulty-053-02,71,2021-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.103469,0,16320 lignes en échec (10.35 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),19,2020-05,schema_drop,2026-11-21 11:00:49
+faulty,faulty-071-03,71,2021-11,detector,missing_drift,Humidity_pct,WARNING,0.974461,0.1,delta_points = 0.974 (seuil 0.1),1,2021-11,schema_drop,2026-11-21 11:00:49
+faulty,faulty-070-01,72,2021-12,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.108681,0.08,"19571 lignes en échec (10.87 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",3,2021-10,,2026-11-21 11:01:06
+faulty,faulty-057-02,72,2021-12,rule,CNS_DURATION,,INFO,0.00142716,0.001,257 lignes en échec (0.14 %) – La durée de l'impact est inférieure à 30 jours,16,2020-09,,2026-11-21 11:01:06
+faulty,faulty-053-02,72,2021-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.118221,0,21289 lignes en échec (11.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),20,2020-05,,2026-11-21 11:01:06
+faulty,faulty-070-01,73,2022-01,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.108124,0.08,"14694 lignes en échec (10.81 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",4,2021-10,,2026-11-21 11:01:18
+faulty,faulty-057-02,73,2022-01,rule,CNS_DURATION,,INFO,0.00166299,0.001,226 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,17,2020-09,,2026-11-21 11:01:18
+faulty,faulty-073-01,73,2022-01,rule,CNF_ZIPCODE,Zipcode,INFO,0.00125835,0.001,171 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,1,2022-01,,2026-11-21 11:01:18
+faulty,faulty-053-02,73,2022-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.250912,0,34099 lignes en échec (25.09 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),21,2020-05,,2026-11-21 11:01:18
+faulty,faulty-070-01,74,2022-02,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.11244,0.08,"18422 lignes en échec (11.24 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",5,2021-10,,2026-11-21 11:01:33
+faulty,faulty-057-02,74,2022-02,rule,CNS_DURATION,,INFO,0.00160523,0.001,263 lignes en échec (0.16 %) – La durée de l'impact est inférieure à 30 jours,18,2020-09,,2026-11-21 11:01:33
+faulty,faulty-073-01,74,2022-02,rule,CNF_ZIPCODE,Zipcode,INFO,0.0011781,0.001,193 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,2,2022-01,,2026-11-21 11:01:33
+faulty,faulty-053-02,74,2022-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.256123,0,41963 lignes en échec (25.61 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),22,2020-05,,2026-11-21 11:01:33
+faulty,faulty-070-01,75,2022-03,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.105598,0.08,"14799 lignes en échec (10.56 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",6,2021-10,,2026-11-21 11:01:46
+faulty,faulty-057-02,75,2022-03,rule,CNS_DURATION,,INFO,0.00179814,0.001,252 lignes en échec (0.18 %) – La durée de l'impact est inférieure à 30 jours,19,2020-09,,2026-11-21 11:01:46
+faulty,faulty-075-01,75,2022-03,rule,CNS_WEATHER_TS,,INFO,0.0251344,0.02,3470 lignes en échec (2.51 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2022-03,,2026-11-21 11:01:46
+faulty,faulty-073-01,75,2022-03,rule,CNF_ZIPCODE,Zipcode,INFO,0.00152715,0.001,214 lignes en échec (0.15 %) – Code postal au format 12345 ou 12345-6789,3,2022-01,,2026-11-21 11:01:46
+faulty,faulty-053-02,75,2022-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.255685,0,35833 lignes en échec (25.57 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),23,2020-05,,2026-11-21 11:01:46
+faulty,faulty-070-01,76,2022-04,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.131915,0.08,"25946 lignes en échec (13.19 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",7,2021-10,,2026-11-21 11:02:03
+faulty,faulty-073-01,76,2022-04,rule,CNF_ZIPCODE,Zipcode,INFO,0.00123555,0.001,243 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,4,2022-01,,2026-11-21 11:02:03
+faulty,faulty-053-02,76,2022-04,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.270297,0,53164 lignes en échec (27.03 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),24,2020-05,,2026-11-21 11:02:03
+faulty,faulty-070-01,77,2022-05,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.13637,0.08,"21760 lignes en échec (13.64 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",8,2021-10,,2026-11-21 11:02:17
+faulty,faulty-073-01,77,2022-05,rule,CNF_ZIPCODE,Zipcode,INFO,0.00136006,0.001,217 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,5,2022-01,,2026-11-21 11:02:17
+faulty,faulty-053-02,77,2022-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.274394,0,43784 lignes en échec (27.44 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),25,2020-05,,2026-11-21 11:02:17
+faulty,faulty-073-01,78,2022-06,rule,CNF_ZIPCODE,Zipcode,INFO,0.00116063,0.001,150 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,6,2022-01,boolean_format,2026-11-21 11:02:29
+faulty,faulty-053-02,78,2022-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.260745,0,33705 lignes en échec (26.07 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),26,2020-05,boolean_format,2026-11-21 11:02:29
+faulty,faulty-078-01,78,2022-06,rule,CNF_BOOLEANS,"Amenity,Bump,Crossing,Give_Way,Junction,No_Exit,Railway,Roundabout,Station,Stop,Traffic_Calming,Traffic_Signal,Turning_Loop",INFO,0.199065,0,25732 lignes en échec (19.91 %) – Les indicateurs routiers valent uniquement True ou False,1,2022-06,boolean_format,2026-11-21 11:02:29
+faulty,faulty-073-01,79,2022-07,rule,CNF_ZIPCODE,Zipcode,INFO,0.00132969,0.001,187 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,7,2022-01,,2026-11-21 11:02:41
+faulty,faulty-053-02,79,2022-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.262625,0,36944 lignes en échec (26.26 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),27,2020-05,,2026-11-21 11:02:41
+faulty,faulty-073-01,80,2022-08,rule,CNF_ZIPCODE,Zipcode,INFO,0.00143777,0.001,219 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,8,2022-01,,2026-11-21 11:02:55
+faulty,faulty-053-02,80,2022-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.264923,0,40364 lignes en échec (26.49 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),28,2020-05,,2026-11-21 11:02:55
+faulty,faulty-073-01,81,2022-09,rule,CNF_ZIPCODE,Zipcode,INFO,0.00138866,0.001,193 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,9,2022-01,,2026-11-21 11:03:08
+faulty,faulty-053-02,81,2022-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.304994,0,42399 lignes en échec (30.50 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),29,2020-05,,2026-11-21 11:03:08
+faulty,faulty-073-01,82,2022-10,rule,CNF_ZIPCODE,Zipcode,INFO,0.00144515,0.001,123 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,10,2022-01,,2026-11-21 11:03:17
+faulty,faulty-053-02,82,2022-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.324567,0,27632 lignes en échec (32.46 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),30,2020-05,,2026-11-21 11:03:17
+faulty,faulty-082-01,82,2022-10,detector,numeric_drift,Severity,WARNING,0.546015,0.25,psi = 0.546 (seuil 0.25),1,2022-10,,2026-11-21 11:03:17
+faulty,faulty-082-02,82,2022-10,detector,numeric_drift,Distance_mi,WARNING,1.23261,0.4,psi = 1.233 (seuil 0.4),1,2022-10,,2026-11-21 11:03:17
+faulty,faulty-082-03,82,2022-10,detector,categorical_drift,Source,WARNING,0.273662,0.25,jensen_shannon = 0.274 (seuil 0.25),1,2022-10,,2026-11-21 11:03:17
+faulty,faulty-073-01,83,2022-11,rule,CNF_ZIPCODE,Zipcode,INFO,0.00188648,0.001,247 lignes en échec (0.19 %) – Code postal au format 12345 ou 12345-6789,11,2022-01,,2026-11-21 11:03:29
+faulty,faulty-053-02,83,2022-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.325086,0,42573 lignes en échec (32.51 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),31,2020-05,,2026-11-21 11:03:29
+faulty,faulty-082-01,83,2022-11,detector,numeric_drift,Severity,WARNING,0.331031,0.25,psi = 0.331 (seuil 0.25),2,2022-10,,2026-11-21 11:03:29
+faulty,faulty-082-02,83,2022-11,detector,numeric_drift,Distance_mi,WARNING,0.686468,0.4,psi = 0.686 (seuil 0.4),2,2022-10,,2026-11-21 11:03:29
+faulty,faulty-073-01,84,2022-12,rule,CNF_ZIPCODE,Zipcode,INFO,0.00168913,0.001,319 lignes en échec (0.17 %) – Code postal au format 12345 ou 12345-6789,12,2022-01,,2026-11-21 11:03:45
+faulty,faulty-053-02,84,2022-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.323893,0,61186 lignes en échec (32.39 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),32,2020-05,,2026-11-21 11:03:45
+faulty,faulty-073-01,85,2023-01,rule,CNF_ZIPCODE,Zipcode,INFO,0.00161611,0.001,260 lignes en échec (0.16 %) – Code postal au format 12345 ou 12345-6789,13,2022-01,,2026-11-21 11:03:59
+faulty,faulty-053-02,85,2023-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.323769,0,52099 lignes en échec (32.38 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),33,2020-05,,2026-11-21 11:03:59
+faulty,faulty-073-01,86,2023-02,rule,CNF_ZIPCODE,Zipcode,INFO,0.00129706,0.001,72 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,14,2022-01,,2026-11-21 11:04:07
+faulty,faulty-053-02,86,2023-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.32601,0,18104 lignes en échec (32.60 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),34,2020-05,,2026-11-21 11:04:07
+faulty,faulty-086-01,86,2023-02,detector,volume,,WARNING,-6.34845,5,robust_z_log = -6.348 (seuil 5),1,2023-02,,2026-11-21 11:04:07
+faulty,faulty-086-02,86,2023-02,detector,numeric_drift,Start_Lat,WARNING,0.251418,0.25,psi = 0.251 (seuil 0.25),1,2023-02,,2026-11-21 11:04:07
+faulty,faulty-086-03,86,2023-02,detector,numeric_drift,Start_Lng,WARNING,0.385649,0.25,psi = 0.386 (seuil 0.25),1,2023-02,,2026-11-21 11:04:07
+faulty,faulty-086-04,86,2023-02,detector,categorical_drift,State,WARNING,0.381048,0.2,jensen_shannon = 0.381 (seuil 0.2),1,2023-02,,2026-11-21 11:04:07
+faulty,faulty-073-01,87,2023-03,rule,CNF_ZIPCODE,Zipcode,INFO,0.00135834,0.001,41 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,15,2022-01,,2026-11-21 11:04:12
+faulty,faulty-053-02,87,2023-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.327227,0,9878 lignes en échec (32.72 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),35,2020-05,,2026-11-21 11:04:12
+faulty,faulty-086-01,87,2023-03,detector,volume,,WARNING,-9.84605,5,robust_z_log = -9.846 (seuil 5),2,2023-02,,2026-11-21 11:04:12
+faulty,faulty-086-02,87,2023-03,detector,numeric_drift,Start_Lat,WARNING,0.438593,0.25,psi = 0.439 (seuil 0.25),2,2023-02,,2026-11-21 11:04:12
+faulty,faulty-086-03,87,2023-03,detector,numeric_drift,Start_Lng,WARNING,0.506903,0.25,psi = 0.507 (seuil 0.25),2,2023-02,,2026-11-21 11:04:12
+faulty,faulty-086-04,87,2023-03,detector,categorical_drift,State,WARNING,0.404864,0.2,jensen_shannon = 0.405 (seuil 0.2),2,2023-02,,2026-11-21 11:04:12
+clean,clean-001-01,1,2016-01,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.571429,0.08,"4 lignes en échec (57.14 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2016-01,,2026-11-21 11:04:49
+clean,clean-001-02,1,2016-01,rule,CNS_DURATION,,INFO,1,0.001,7 lignes en échec (100.00 %) – La durée de l'impact est inférieure à 30 jours,1,2016-01,,2026-11-21 11:04:49
+clean,clean-013-01,13,2017-01,detector,numeric_drift,Temperature_F,WARNING,0.455244,0.25,psi = 0.455 (seuil 0.25),1,2017-01,,2026-11-21 11:06:06
+clean,clean-019-01,19,2017-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0185613,0,803 lignes en échec (1.86 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2017-07,,2026-11-21 11:06:47
+clean,clean-020-01,20,2017-08,detector,categorical_drift,State,WARNING,0.274702,0.2,jensen_shannon = 0.275 (seuil 0.2),1,2017-08,,2026-11-21 11:06:55
+clean,clean-030-01,30,2018-06,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0798308,0.05,5415 lignes en échec (7.98 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2018-06,,2026-11-21 11:08:17
+clean,clean-040-01,40,2019-04,detector,numeric_drift,Pressure_in,WARNING,2.68976,0.35,psi = 2.690 (seuil 0.35),1,2019-04,,2026-11-21 11:09:37
+clean,clean-040-02,40,2019-04,detector,numeric_drift,Wind_Speed_mph,WARNING,1.02024,0.25,psi = 1.020 (seuil 0.25),1,2019-04,,2026-11-21 11:09:37
+clean,clean-040-03,40,2019-04,detector,numeric_drift,Precipitation_in,WARNING,1.11687,0.25,psi = 1.117 (seuil 0.25),1,2019-04,,2026-11-21 11:09:37
+clean,clean-040-04,40,2019-04,detector,categorical_drift,Weather_Condition,WARNING,0.779869,0.5,jensen_shannon = 0.780 (seuil 0.5),1,2019-04,,2026-11-21 11:09:37
+clean,clean-040-01,41,2019-05,detector,numeric_drift,Pressure_in,WARNING,1.38804,0.35,psi = 1.388 (seuil 0.35),2,2019-04,,2026-11-21 11:09:45
+clean,clean-040-04,41,2019-05,detector,categorical_drift,Weather_Condition,WARNING,0.528281,0.5,jensen_shannon = 0.528 (seuil 0.5),2,2019-04,,2026-11-21 11:09:45
+clean,clean-040-01,42,2019-06,detector,numeric_drift,Pressure_in,WARNING,0.646984,0.35,psi = 0.647 (seuil 0.35),3,2019-04,,2026-11-21 11:09:53
+clean,clean-046-01,46,2019-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,9.35322e-06,0,1 lignes en échec (0.00 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2019-10,,2026-11-21 11:10:27
+clean,clean-053-01,53,2020-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,5.70093e-05,0,5 lignes en échec (0.01 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),1,2020-05,,2026-11-21 11:11:31
+clean,clean-053-01,54,2020-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,9.95312e-06,0,1 lignes en échec (0.00 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),2,2020-05,,2026-11-21 11:11:40
+clean,clean-055-01,55,2020-07,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0502711,0.05,1771 lignes en échec (5.03 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2020-07,,2026-11-21 11:11:46
+clean,clean-053-01,55,2020-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,5.67714e-05,0,2 lignes en échec (0.01 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),3,2020-05,,2026-11-21 11:11:46
+clean,clean-055-02,55,2020-07,detector,volume,,CRITICAL,-10.566,5,robust_z_log = -10.566 (seuil 5),1,2020-07,,2026-11-21 11:11:46
+clean,clean-055-03,55,2020-07,detector,categorical_drift,Source,WARNING,0.32714,0.25,jensen_shannon = 0.327 (seuil 0.25),1,2020-07,,2026-11-21 11:11:46
+clean,clean-055-04,55,2020-07,detector,missing_drift,End_Lat,WARNING,0.435442,0.3,delta_points = 0.435 (seuil 0.3),1,2020-07,,2026-11-21 11:11:46
+clean,clean-055-05,55,2020-07,detector,missing_drift,End_Lng,WARNING,0.435442,0.3,delta_points = 0.435 (seuil 0.3),1,2020-07,,2026-11-21 11:11:46
+clean,clean-053-01,56,2020-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.000616292,0,23 lignes en échec (0.06 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),4,2020-05,,2026-11-21 11:11:51
+clean,clean-055-02,56,2020-08,detector,volume,,WARNING,-9.89801,5,robust_z_log = -9.898 (seuil 5),2,2020-07,,2026-11-21 11:11:51
+clean,clean-055-03,56,2020-08,detector,categorical_drift,Source,WARNING,0.373576,0.25,jensen_shannon = 0.374 (seuil 0.25),2,2020-07,,2026-11-21 11:11:51
+clean,clean-055-04,56,2020-08,detector,missing_drift,End_Lat,WARNING,0.410438,0.3,delta_points = 0.410 (seuil 0.3),2,2020-07,,2026-11-21 11:11:51
+clean,clean-055-05,56,2020-08,detector,missing_drift,End_Lng,WARNING,0.410438,0.3,delta_points = 0.410 (seuil 0.3),2,2020-07,,2026-11-21 11:11:51
+clean,clean-057-01,57,2020-09,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.125981,0.08,"10688 lignes en échec (12.60 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2020-09,,2026-11-21 11:12:00
+clean,clean-057-02,57,2020-09,rule,CNS_DURATION,,INFO,0.00198024,0.001,168 lignes en échec (0.20 %) – La durée de l'impact est inférieure à 30 jours,1,2020-09,,2026-11-21 11:12:00
+clean,clean-053-01,57,2020-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0227021,0,1926 lignes en échec (2.27 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),5,2020-05,,2026-11-21 11:12:00
+clean,clean-057-03,57,2020-09,detector,numeric_drift,Distance_mi,WARNING,0.614234,0.4,psi = 0.614 (seuil 0.4),1,2020-09,,2026-11-21 11:12:00
+clean,clean-057-01,58,2020-10,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.146311,0.08,"19149 lignes en échec (14.63 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",2,2020-09,,2026-11-21 11:12:12
+clean,clean-057-02,58,2020-10,rule,CNS_DURATION,,INFO,0.00274299,0.001,359 lignes en échec (0.27 %) – La durée de l'impact est inférieure à 30 jours,2,2020-09,,2026-11-21 11:12:12
+clean,clean-053-01,58,2020-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0276057,0,3613 lignes en échec (2.76 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),6,2020-05,,2026-11-21 11:12:12
+clean,clean-057-03,58,2020-10,detector,numeric_drift,Distance_mi,WARNING,0.474953,0.4,psi = 0.475 (seuil 0.4),2,2020-09,,2026-11-21 11:12:12
+clean,clean-058-01,58,2020-10,detector,categorical_drift,Source,WARNING,0.279701,0.25,jensen_shannon = 0.280 (seuil 0.25),1,2020-10,,2026-11-21 11:12:12
+clean,clean-058-02,58,2020-10,detector,categorical_drift,Sunrise_Sunset,WARNING,0.155423,0.15,jensen_shannon = 0.155 (seuil 0.15),1,2020-10,,2026-11-21 11:12:12
+clean,clean-059-01,59,2020-11,rule,CMP_WEATHER_CORE,"Temperature_F,Humidity_pct,Pressure_in,Visibility_mi,Weather_Condition",WARNING,0.0562433,0.05,9687 lignes en échec (5.62 %) – Les mesures météo principales sont vides dans au plus 5 % des lignes,1,2020-11,,2026-11-21 11:12:25
+clean,clean-057-01,59,2020-11,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.162419,0.08,"27974 lignes en échec (16.24 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",3,2020-09,,2026-11-21 11:12:25
+clean,clean-057-02,59,2020-11,rule,CNS_DURATION,,INFO,0.00154441,0.001,266 lignes en échec (0.15 %) – La durée de l'impact est inférieure à 30 jours,3,2020-09,,2026-11-21 11:12:25
+clean,clean-059-02,59,2020-11,rule,CNS_WEATHER_TS,,INFO,0.0209065,0.02,3445 lignes en échec (2.09 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2020-11,,2026-11-21 11:12:25
+clean,clean-053-01,59,2020-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0328623,0,5660 lignes en échec (3.29 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),7,2020-05,,2026-11-21 11:12:25
+clean,clean-059-03,59,2020-11,detector,volume,,WARNING,7.92827,5,robust_z_log = 7.928 (seuil 5),1,2020-11,,2026-11-21 11:12:25
+clean,clean-058-02,59,2020-11,detector,categorical_drift,Sunrise_Sunset,WARNING,0.159229,0.15,jensen_shannon = 0.159 (seuil 0.15),2,2020-10,,2026-11-21 11:12:25
+clean,clean-057-01,60,2020-12,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.164951,0.08,"29436 lignes en échec (16.50 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",4,2020-09,,2026-11-21 11:12:40
+clean,clean-057-02,60,2020-12,rule,CNS_DURATION,,INFO,0.0016643,0.001,297 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,4,2020-09,,2026-11-21 11:12:40
+clean,clean-053-01,60,2020-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0340986,0,6085 lignes en échec (3.41 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),8,2020-05,,2026-11-21 11:12:40
+clean,clean-059-03,60,2020-12,detector,volume,,WARNING,5.93372,5,robust_z_log = 5.934 (seuil 5),2,2020-11,,2026-11-21 11:12:40
+clean,clean-057-02,61,2021-01,rule,CNS_DURATION,,INFO,0.00194227,0.001,297 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,5,2020-09,,2026-11-21 11:12:53
+clean,clean-061-01,61,2021-01,rule,CNS_WEATHER_TS,,INFO,0.0244802,0.02,3659 lignes en échec (2.45 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2021-01,,2026-11-21 11:12:53
+clean,clean-053-01,61,2021-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0854467,0,13066 lignes en échec (8.54 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),9,2020-05,,2026-11-21 11:12:53
+clean,clean-057-02,62,2021-02,rule,CNS_DURATION,,INFO,0.00171039,0.001,265 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,6,2020-09,,2026-11-21 11:13:07
+clean,clean-053-01,62,2021-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0859134,0,13311 lignes en échec (8.59 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),10,2020-05,,2026-11-21 11:13:07
+clean,clean-057-02,63,2021-03,rule,CNS_DURATION,,INFO,0.00202994,0.001,184 lignes en échec (0.20 %) – La durée de l'impact est inférieure à 30 jours,7,2020-09,,2026-11-21 11:13:16
+clean,clean-053-01,63,2021-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0829849,0,7522 lignes en échec (8.30 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),11,2020-05,,2026-11-21 11:13:16
+clean,clean-057-02,64,2021-04,rule,CNS_DURATION,,INFO,0.00165038,0.001,150 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,8,2020-09,,2026-11-21 11:13:25
+clean,clean-053-01,64,2021-04,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0872062,0,7926 lignes en échec (8.72 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),12,2020-05,,2026-11-21 11:13:25
+clean,clean-057-02,65,2021-05,rule,CNS_DURATION,,INFO,0.00260488,0.001,265 lignes en échec (0.26 %) – La durée de l'impact est inférieure à 30 jours,9,2020-09,,2026-11-21 11:13:37
+clean,clean-053-01,65,2021-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0862364,0,8773 lignes en échec (8.62 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),13,2020-05,,2026-11-21 11:13:37
+clean,clean-057-02,66,2021-06,rule,CNS_DURATION,,INFO,0.00192436,0.001,253 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,10,2020-09,,2026-11-21 11:13:49
+clean,clean-053-01,66,2021-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0982491,0,12917 lignes en échec (9.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),14,2020-05,,2026-11-21 11:13:49
+clean,clean-057-02,67,2021-07,rule,CNS_DURATION,,INFO,0.0022853,0.001,259 lignes en échec (0.23 %) – La durée de l'impact est inférieure à 30 jours,11,2020-09,,2026-11-21 11:14:00
+clean,clean-053-01,67,2021-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0999091,0,11323 lignes en échec (9.99 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),15,2020-05,,2026-11-21 11:14:00
+clean,clean-057-02,68,2021-08,rule,CNS_DURATION,,INFO,0.00129894,0.001,157 lignes en échec (0.13 %) – La durée de l'impact est inférieure à 30 jours,12,2020-09,,2026-11-21 11:14:11
+clean,clean-053-01,68,2021-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0998858,0,12073 lignes en échec (9.99 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),16,2020-05,,2026-11-21 11:14:11
+clean,clean-057-02,69,2021-09,rule,CNS_DURATION,,INFO,0.00176461,0.001,238 lignes en échec (0.18 %) – La durée de l'impact est inférieure à 30 jours,13,2020-09,,2026-11-21 11:14:23
+clean,clean-053-01,69,2021-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.0981731,0,13241 lignes en échec (9.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),17,2020-05,,2026-11-21 11:14:23
+clean,clean-070-01,70,2021-10,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.0839396,0.08,"11272 lignes en échec (8.39 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",1,2021-10,,2026-11-21 11:14:35
+clean,clean-057-02,70,2021-10,rule,CNS_DURATION,,INFO,0.00167552,0.001,225 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,14,2020-09,,2026-11-21 11:14:35
+clean,clean-053-01,70,2021-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.10097,0,13559 lignes en échec (10.10 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),18,2020-05,,2026-11-21 11:14:35
+clean,clean-070-01,71,2021-11,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.0918284,0.08,"14484 lignes en échec (9.18 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",2,2021-10,,2026-11-21 11:14:49
+clean,clean-057-02,71,2021-11,rule,CNS_DURATION,,INFO,0.00194004,0.001,306 lignes en échec (0.19 %) – La durée de l'impact est inférieure à 30 jours,15,2020-09,,2026-11-21 11:14:49
+clean,clean-053-01,71,2021-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.103469,0,16320 lignes en échec (10.35 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),19,2020-05,,2026-11-21 11:14:49
+clean,clean-070-01,72,2021-12,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.108681,0.08,"19571 lignes en échec (10.87 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",3,2021-10,,2026-11-21 11:15:04
+clean,clean-057-02,72,2021-12,rule,CNS_DURATION,,INFO,0.00142716,0.001,257 lignes en échec (0.14 %) – La durée de l'impact est inférieure à 30 jours,16,2020-09,,2026-11-21 11:15:04
+clean,clean-053-01,72,2021-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.118221,0,21289 lignes en échec (11.82 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),20,2020-05,,2026-11-21 11:15:04
+clean,clean-070-01,73,2022-01,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.108124,0.08,"14694 lignes en échec (10.81 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",4,2021-10,,2026-11-21 11:15:16
+clean,clean-057-02,73,2022-01,rule,CNS_DURATION,,INFO,0.00166299,0.001,226 lignes en échec (0.17 %) – La durée de l'impact est inférieure à 30 jours,17,2020-09,,2026-11-21 11:15:16
+clean,clean-073-01,73,2022-01,rule,CNF_ZIPCODE,Zipcode,INFO,0.00125835,0.001,171 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,1,2022-01,,2026-11-21 11:15:16
+clean,clean-053-01,73,2022-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.250912,0,34099 lignes en échec (25.09 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),21,2020-05,,2026-11-21 11:15:16
+clean,clean-070-01,74,2022-02,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.11244,0.08,"18422 lignes en échec (11.24 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",5,2021-10,,2026-11-21 11:15:30
+clean,clean-057-02,74,2022-02,rule,CNS_DURATION,,INFO,0.00160523,0.001,263 lignes en échec (0.16 %) – La durée de l'impact est inférieure à 30 jours,18,2020-09,,2026-11-21 11:15:30
+clean,clean-073-01,74,2022-02,rule,CNF_ZIPCODE,Zipcode,INFO,0.0011781,0.001,193 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,2,2022-01,,2026-11-21 11:15:30
+clean,clean-053-01,74,2022-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.256123,0,41963 lignes en échec (25.61 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),22,2020-05,,2026-11-21 11:15:30
+clean,clean-070-01,75,2022-03,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.105598,0.08,"14799 lignes en échec (10.56 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",6,2021-10,,2026-11-21 11:15:43
+clean,clean-057-02,75,2022-03,rule,CNS_DURATION,,INFO,0.00179814,0.001,252 lignes en échec (0.18 %) – La durée de l'impact est inférieure à 30 jours,19,2020-09,,2026-11-21 11:15:43
+clean,clean-075-01,75,2022-03,rule,CNS_WEATHER_TS,,INFO,0.0251344,0.02,3470 lignes en échec (2.51 %) – L'observation météo est à moins de 2 h du début de l'accident,1,2022-03,,2026-11-21 11:15:43
+clean,clean-073-01,75,2022-03,rule,CNF_ZIPCODE,Zipcode,INFO,0.00152715,0.001,214 lignes en échec (0.15 %) – Code postal au format 12345 ou 12345-6789,3,2022-01,,2026-11-21 11:15:43
+clean,clean-053-01,75,2022-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.255685,0,35833 lignes en échec (25.57 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),23,2020-05,,2026-11-21 11:15:43
+clean,clean-070-01,76,2022-04,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.131915,0.08,"25946 lignes en échec (13.19 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",7,2021-10,,2026-11-21 11:15:59
+clean,clean-073-01,76,2022-04,rule,CNF_ZIPCODE,Zipcode,INFO,0.00123555,0.001,243 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,4,2022-01,,2026-11-21 11:15:59
+clean,clean-053-01,76,2022-04,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.270297,0,53164 lignes en échec (27.03 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),24,2020-05,,2026-11-21 11:15:59
+clean,clean-070-01,77,2022-05,rule,UNQ_EVENT,"Start_Time,Start_Lat,Start_Lng,Description",WARNING,0.13637,0.08,"21760 lignes en échec (13.64 %) – Pas deux lignes pour le même événement (même heure, lieu et description)",8,2021-10,,2026-11-21 11:16:13
+clean,clean-073-01,77,2022-05,rule,CNF_ZIPCODE,Zipcode,INFO,0.00136006,0.001,217 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,5,2022-01,,2026-11-21 11:16:13
+clean,clean-053-01,77,2022-05,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.274394,0,43784 lignes en échec (27.44 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),25,2020-05,,2026-11-21 11:16:13
+clean,clean-073-01,78,2022-06,rule,CNF_ZIPCODE,Zipcode,INFO,0.00116063,0.001,150 lignes en échec (0.12 %) – Code postal au format 12345 ou 12345-6789,6,2022-01,,2026-11-21 11:16:25
+clean,clean-053-01,78,2022-06,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.260745,0,33705 lignes en échec (26.07 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),26,2020-05,,2026-11-21 11:16:25
+clean,clean-073-01,79,2022-07,rule,CNF_ZIPCODE,Zipcode,INFO,0.00132969,0.001,187 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,7,2022-01,,2026-11-21 11:16:37
+clean,clean-053-01,79,2022-07,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.262625,0,36944 lignes en échec (26.26 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),27,2020-05,,2026-11-21 11:16:37
+clean,clean-073-01,80,2022-08,rule,CNF_ZIPCODE,Zipcode,INFO,0.00143777,0.001,219 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,8,2022-01,,2026-11-21 11:16:50
+clean,clean-053-01,80,2022-08,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.264923,0,40364 lignes en échec (26.49 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),28,2020-05,,2026-11-21 11:16:50
+clean,clean-073-01,81,2022-09,rule,CNF_ZIPCODE,Zipcode,INFO,0.00138866,0.001,193 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,9,2022-01,,2026-11-21 11:17:03
+clean,clean-053-01,81,2022-09,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.304994,0,42399 lignes en échec (30.50 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),29,2020-05,,2026-11-21 11:17:03
+clean,clean-073-01,82,2022-10,rule,CNF_ZIPCODE,Zipcode,INFO,0.00144515,0.001,123 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,10,2022-01,,2026-11-21 11:17:12
+clean,clean-053-01,82,2022-10,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.324567,0,27632 lignes en échec (32.46 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),30,2020-05,,2026-11-21 11:17:12
+clean,clean-082-01,82,2022-10,detector,numeric_drift,Severity,WARNING,0.546015,0.25,psi = 0.546 (seuil 0.25),1,2022-10,,2026-11-21 11:17:12
+clean,clean-082-02,82,2022-10,detector,numeric_drift,Distance_mi,WARNING,1.23261,0.4,psi = 1.233 (seuil 0.4),1,2022-10,,2026-11-21 11:17:12
+clean,clean-082-03,82,2022-10,detector,categorical_drift,Source,WARNING,0.273662,0.25,jensen_shannon = 0.274 (seuil 0.25),1,2022-10,,2026-11-21 11:17:12
+clean,clean-073-01,83,2022-11,rule,CNF_ZIPCODE,Zipcode,INFO,0.00188648,0.001,247 lignes en échec (0.19 %) – Code postal au format 12345 ou 12345-6789,11,2022-01,,2026-11-21 11:17:24
+clean,clean-053-01,83,2022-11,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.325086,0,42573 lignes en échec (32.51 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),31,2020-05,,2026-11-21 11:17:24
+clean,clean-082-01,83,2022-11,detector,numeric_drift,Severity,WARNING,0.331031,0.25,psi = 0.331 (seuil 0.25),2,2022-10,,2026-11-21 11:17:24
+clean,clean-082-02,83,2022-11,detector,numeric_drift,Distance_mi,WARNING,0.686468,0.4,psi = 0.686 (seuil 0.4),2,2022-10,,2026-11-21 11:17:24
+clean,clean-073-01,84,2022-12,rule,CNF_ZIPCODE,Zipcode,INFO,0.00168913,0.001,319 lignes en échec (0.17 %) – Code postal au format 12345 ou 12345-6789,12,2022-01,,2026-11-21 11:17:41
+clean,clean-053-01,84,2022-12,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.323893,0,61186 lignes en échec (32.39 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),32,2020-05,,2026-11-21 11:17:41
+clean,clean-073-01,85,2023-01,rule,CNF_ZIPCODE,Zipcode,INFO,0.00161611,0.001,260 lignes en échec (0.16 %) – Code postal au format 12345 ou 12345-6789,13,2022-01,,2026-11-21 11:17:55
+clean,clean-053-01,85,2023-01,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.323769,0,52099 lignes en échec (32.38 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),33,2020-05,,2026-11-21 11:17:55
+clean,clean-073-01,86,2023-02,rule,CNF_ZIPCODE,Zipcode,INFO,0.00129706,0.001,72 lignes en échec (0.13 %) – Code postal au format 12345 ou 12345-6789,14,2022-01,,2026-11-21 11:18:04
+clean,clean-053-01,86,2023-02,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.32601,0,18104 lignes en échec (32.60 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),34,2020-05,,2026-11-21 11:18:04
+clean,clean-086-01,86,2023-02,detector,volume,,WARNING,-6.34845,5,robust_z_log = -6.348 (seuil 5),1,2023-02,,2026-11-21 11:18:04
+clean,clean-086-02,86,2023-02,detector,numeric_drift,Start_Lat,WARNING,0.251418,0.25,psi = 0.251 (seuil 0.25),1,2023-02,,2026-11-21 11:18:04
+clean,clean-086-03,86,2023-02,detector,numeric_drift,Start_Lng,WARNING,0.385649,0.25,psi = 0.386 (seuil 0.25),1,2023-02,,2026-11-21 11:18:04
+clean,clean-086-04,86,2023-02,detector,categorical_drift,State,WARNING,0.381048,0.2,jensen_shannon = 0.381 (seuil 0.2),1,2023-02,,2026-11-21 11:18:04
+clean,clean-073-01,87,2023-03,rule,CNF_ZIPCODE,Zipcode,INFO,0.00135834,0.001,41 lignes en échec (0.14 %) – Code postal au format 12345 ou 12345-6789,15,2022-01,,2026-11-21 11:18:09
+clean,clean-053-01,87,2023-03,rule,CNF_TIMESTAMP,"Start_Time,End_Time",WARNING,0.327227,0,9878 lignes en échec (32.72 %) – Horodatages au format standard yyyy-MM-dd HH:mm:ss (sans fraction de secondes),35,2020-05,,2026-11-21 11:18:09
+clean,clean-086-01,87,2023-03,detector,volume,,WARNING,-9.84605,5,robust_z_log = -9.846 (seuil 5),2,2023-02,,2026-11-21 11:18:09
+clean,clean-086-02,87,2023-03,detector,numeric_drift,Start_Lat,WARNING,0.438593,0.25,psi = 0.439 (seuil 0.25),2,2023-02,,2026-11-21 11:18:09
+clean,clean-086-03,87,2023-03,detector,numeric_drift,Start_Lng,WARNING,0.506903,0.25,psi = 0.507 (seuil 0.25),2,2023-02,,2026-11-21 11:18:09
+clean,clean-086-04,87,2023-03,detector,categorical_drift,State,WARNING,0.404864,0.2,jensen_shannon = 0.405 (seuil 0.2),2,2023-02,,2026-11-21 11:18:09

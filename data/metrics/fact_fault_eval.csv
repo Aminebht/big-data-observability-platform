@@ -1,0 +1,13 @@
+batch_month,fault_type,description,expected,detected_by,detected,expected_hit,new_alerts
+2017-03,missing_spike,40 % de Temperature_F vidés,CMP_WEATHER_CORE;missing_drift,CMP_WEATHER_CORE;missing_drift,True,True,2
+2017-09,duplicates,5 % des lignes dupliquées avec le même ID,UNQ_ID;UNQ_EVENT,UNQ_ID,True,True,1
+2018-02,out_of_range,"Temperature_F=500 (2 %), Severity=9 (1 %), coordonnées hors USA (1 %)",VAL_TEMP;VAL_SEVERITY;VAL_LAT_LNG;outliers,VAL_LAT_LNG;VAL_SEVERITY;VAL_TEMP;outliers,True,True,4
+2018-08,inconsistency,"End_Time avant Start_Time (3 %), Day/Night contradictoires (3 %)",CNS_TIME_ORDER;CNS_TWILIGHT,CNS_TIME_ORDER;CNS_TWILIGHT,True,True,2
+2019-03,format,"Zipcode 'ABCDE' (3 %), Start_Time au format MM/dd/yyyy HH:mm (3 %)",CNF_ZIPCODE;CNF_TIMESTAMP,CNF_TIMESTAMP;CNF_ZIPCODE,True,True,2
+2019-07,schema_rename,Weather_Condition renommée en Weather,schema;CMP_WEATHER_CORE,CMP_WEATHER_CORE;SCHEMA;categorical_drift;missing_drift,True,True,4
+2019-12,volume_drop,lot réduit à 10 % des lignes,volume,volume,True,True,1
+2020-05,volume_spike,lot triplé (nouveaux ID),volume,CNS_TIME_ORDER;volume,True,True,2
+2020-10,category_shift,60 % de Weather_Condition remplacés par 'Snow',categorical_drift,categorical_drift,True,True,1
+2021-04,unit_change,Pressure_in convertie en hPa pour 30 % des lignes,VAL_PRESSURE;numeric_drift,VAL_PRESSURE;numeric_drift,True,True,2
+2021-11,schema_drop,colonne Humidity_pct supprimée,schema;CMP_WEATHER_CORE,CMP_WEATHER_CORE;SCHEMA;missing_drift,True,True,3
+2022-06,boolean_format,indicateurs routiers '1'/'0' au lieu de True/False (20 %),CNF_BOOLEANS,CNF_BOOLEANS,True,True,1
