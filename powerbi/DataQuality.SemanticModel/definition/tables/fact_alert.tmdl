@@ -1,10 +1,10 @@
 /// Alertes générées (une ligne par lot ; une alerte récurrente garde le même alert_id).
 table fact_alert
-	lineageTag: 1f3b99e6-b445-4c82-bc2b-ec12d6e23e1e
+	lineageTag: 71536af3-39d7-4eff-8a5d-04694c3e3b8d
 
 	column run_id
 		dataType: string
-		lineageTag: 2d0d0b6b-3e28-4166-9cbb-87267af51e54
+		lineageTag: ed505885-4e70-462c-896d-fab0b9e41bcc
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table fact_alert
 
 	column alert_id
 		dataType: string
-		lineageTag: 38439620-f532-41d3-913c-52f862b5ceee
+		lineageTag: c3182b0f-47a1-4051-9310-f01a7eb32121
 		summarizeBy: none
 		sourceColumn: alert_id
 
@@ -20,7 +20,7 @@ table fact_alert
 
 	column batch_id
 		dataType: int64
-		lineageTag: ead4d1e5-9749-4e30-9563-481d9546f342
+		lineageTag: 1fb6121b-4236-4a68-852f-14ca13be1842
 		summarizeBy: none
 		sourceColumn: batch_id
 
@@ -28,7 +28,7 @@ table fact_alert
 
 	column batch_month
 		dataType: string
-		lineageTag: 6b6d8b1f-6db8-4bfb-9756-f81c1b9cc8af
+		lineageTag: c42b4be1-39e6-4d0e-b62d-805f9df9f9fc
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -36,7 +36,7 @@ table fact_alert
 
 	column source
 		dataType: string
-		lineageTag: 1b7c7663-3e3d-4375-bfce-ca08e2cd6abd
+		lineageTag: 42824a37-17d0-43d7-a075-ce7dceea0123
 		summarizeBy: none
 		sourceColumn: source
 
@@ -44,7 +44,7 @@ table fact_alert
 
 	column detector_or_rule
 		dataType: string
-		lineageTag: 3ccf7461-6cec-4684-b610-51662520ebdb
+		lineageTag: f5005854-2b76-4f45-ac5e-8a7155f1af0d
 		summarizeBy: none
 		sourceColumn: detector_or_rule
 
@@ -52,7 +52,7 @@ table fact_alert
 
 	column column
 		dataType: string
-		lineageTag: effcd7f3-58c6-4b23-a197-5ab463687568
+		lineageTag: 02d59065-9a54-4fc5-aedd-667918a7f67d
 		summarizeBy: none
 		sourceColumn: column
 
@@ -60,7 +60,7 @@ table fact_alert
 
 	column severity
 		dataType: string
-		lineageTag: 800ae28d-2309-4c99-a3b8-13865453834f
+		lineageTag: 8e9253ec-b82e-46cf-9e63-b8b9a63f5d41
 		summarizeBy: none
 		sourceColumn: severity
 
@@ -69,7 +69,7 @@ table fact_alert
 	column value
 		dataType: double
 		formatString: 0.00
-		lineageTag: e9ca62cb-54a4-476f-9261-5f5dda01a88a
+		lineageTag: 69dd2ca5-a401-4fd7-ab8b-65a006372d26
 		summarizeBy: sum
 		sourceColumn: value
 
@@ -78,7 +78,7 @@ table fact_alert
 	column threshold
 		dataType: double
 		formatString: 0.00
-		lineageTag: 0d7530b3-63f2-47fa-b5cf-bf10d9bceb08
+		lineageTag: 6d6f2758-cd5c-41ad-9f18-b0a493c18f25
 		summarizeBy: sum
 		sourceColumn: threshold
 
@@ -86,7 +86,7 @@ table fact_alert
 
 	column message
 		dataType: string
-		lineageTag: 3df09acd-7218-44fb-90ee-4ad5b613e2ee
+		lineageTag: 249598f9-a273-4335-ae00-e3aa98d3a1b2
 		summarizeBy: none
 		sourceColumn: message
 
@@ -94,7 +94,7 @@ table fact_alert
 
 	column occurrences
 		dataType: int64
-		lineageTag: e547c6f4-9b3c-483e-918e-c82ab8667785
+		lineageTag: 49b0fb80-c73f-44a9-b2f4-e1b04e2abaf9
 		summarizeBy: sum
 		sourceColumn: occurrences
 
@@ -102,7 +102,7 @@ table fact_alert
 
 	column first_batch
 		dataType: string
-		lineageTag: e27ac0ad-dab4-4b81-8e80-6c7189e33485
+		lineageTag: 1d9800d8-c435-45ab-8c75-442eae74a0f1
 		summarizeBy: none
 		sourceColumn: first_batch
 
@@ -110,7 +110,7 @@ table fact_alert
 
 	column planted_fault
 		dataType: string
-		lineageTag: 1fb76c8f-bd12-4883-82c1-3ad79af4ab5f
+		lineageTag: 50c29743-3dd6-4b98-8ded-5f519f0834c1
 		summarizeBy: none
 		sourceColumn: planted_fault
 
@@ -118,7 +118,7 @@ table fact_alert
 
 	column created_at
 		dataType: string
-		lineageTag: 3754a9cc-41ca-407d-8885-81186a83ac56
+		lineageTag: beceb734-cf5e-40c4-85c7-415578de79a2
 		summarizeBy: none
 		sourceColumn: created_at
 
@@ -127,7 +127,7 @@ table fact_alert
 	column BatchKey
 		dataType: string
 		isHidden
-		lineageTag: d469b7e4-8d57-4289-9c43-d11d13fe2c54
+		lineageTag: a636358c-22f6-4680-b76a-ef22f9cdb2f8
 		summarizeBy: none
 		sourceColumn: BatchKey
 

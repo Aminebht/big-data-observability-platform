@@ -1,10 +1,10 @@
 /// Évaluation : vrais et faux positifs par règle / détecteur.
 table fact_detector_eval
-	lineageTag: 4ec3c71d-6346-4df2-9335-91eae11038ac
+	lineageTag: d23782c2-2601-4298-9e85-d67585be0b1e
 
 	column detector_or_rule
 		dataType: string
-		lineageTag: 36b13170-3b63-4ddb-b1f9-4e7ee88cc4ec
+		lineageTag: 88dc64a2-f667-4313-a138-5cf9523dca3c
 		summarizeBy: none
 		sourceColumn: detector_or_rule
 
@@ -12,7 +12,7 @@ table fact_detector_eval
 
 	column tp
 		dataType: int64
-		lineageTag: 4f9ade98-2289-4636-80d8-75da1bd79f1e
+		lineageTag: a0410ab4-54f1-4850-a623-e29249635ff4
 		summarizeBy: sum
 		sourceColumn: tp
 
@@ -20,7 +20,7 @@ table fact_detector_eval
 
 	column total
 		dataType: int64
-		lineageTag: a3f91798-5aba-4571-b60a-942519b14f02
+		lineageTag: 4880d00e-f761-4c7e-816f-1ec366e39a94
 		summarizeBy: sum
 		sourceColumn: total
 
@@ -28,7 +28,7 @@ table fact_detector_eval
 
 	column fp
 		dataType: int64
-		lineageTag: 3d0c8a03-b512-4a9c-b984-d163ccd1a377
+		lineageTag: 3061d997-716c-4261-8365-f72dd7dbc595
 		summarizeBy: sum
 		sourceColumn: fp
 
@@ -37,7 +37,7 @@ table fact_detector_eval
 	column precision
 		dataType: double
 		formatString: 0.00
-		lineageTag: e45901fd-6a7a-4246-b796-b13a5bcc36e0
+		lineageTag: 28dc0e45-b4cc-4478-ab51-33be521ddc64
 		summarizeBy: sum
 		sourceColumn: precision
 

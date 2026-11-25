@@ -1,10 +1,10 @@
 /// Complétude de chaque attribut sur chaque lot.
 table fact_column_completeness
-	lineageTag: c131d2c7-8af5-4e8e-a549-1af2c93e66a1
+	lineageTag: 1348dd44-264e-484a-af02-e638a52df954
 
 	column run_id
 		dataType: string
-		lineageTag: e05e738b-e0c1-427a-abb4-6b9c759d6685
+		lineageTag: 5c0878b6-4070-46ca-9d0f-3a8abde86d04
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table fact_column_completeness
 
 	column batch_id
 		dataType: int64
-		lineageTag: 2f4e01f1-5c3f-4c31-8ca1-3a359bece310
+		lineageTag: d725d94e-e1a0-4969-82f7-f60d3a231aa9
 		summarizeBy: none
 		sourceColumn: batch_id
 
@@ -20,7 +20,7 @@ table fact_column_completeness
 
 	column batch_month
 		dataType: string
-		lineageTag: 00f7cdf0-1810-4147-adf7-f26e91db3e44
+		lineageTag: 9f2a02f3-5a46-43d8-97a7-fe7a6a8d8300
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -28,7 +28,7 @@ table fact_column_completeness
 
 	column column
 		dataType: string
-		lineageTag: 6586ad75-2eac-4ede-b0f4-bf41667cd5fd
+		lineageTag: b96bf61b-f0c3-4f8c-a0c4-deaefebb31bb
 		summarizeBy: none
 		sourceColumn: column
 
@@ -36,7 +36,7 @@ table fact_column_completeness
 
 	column rows
 		dataType: int64
-		lineageTag: 4ce957b5-242a-441b-b9a4-f1c8c0b548de
+		lineageTag: ca2ae705-1a1f-40e8-acda-9add16e467c1
 		summarizeBy: sum
 		sourceColumn: rows
 
@@ -44,7 +44,7 @@ table fact_column_completeness
 
 	column missing
 		dataType: int64
-		lineageTag: 65baea45-47c6-4498-976b-470f5f51ad1a
+		lineageTag: 9f7efabb-130c-46d7-9cb5-0d855f9d6ad1
 		summarizeBy: sum
 		sourceColumn: missing
 
@@ -53,7 +53,7 @@ table fact_column_completeness
 	column missing_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: ffe86aff-972f-437c-9401-41498a74f89b
+		lineageTag: a98567a8-29ea-476c-92ee-18690d053054
 		summarizeBy: sum
 		sourceColumn: missing_rate
 
@@ -62,7 +62,7 @@ table fact_column_completeness
 	column completeness_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: 371e4727-883d-4c25-a8ce-d0a078ab0eaf
+		lineageTag: db1065da-c33e-4c6a-97f8-7938b0b12940
 		summarizeBy: sum
 		sourceColumn: completeness_rate
 
@@ -71,7 +71,7 @@ table fact_column_completeness
 	column BatchKey
 		dataType: string
 		isHidden
-		lineageTag: 5a4b83b3-8303-416f-835b-c47c04027ad5
+		lineageTag: b688eb72-410c-4675-979d-dd3a89764873
 		summarizeBy: none
 		sourceColumn: BatchKey
 

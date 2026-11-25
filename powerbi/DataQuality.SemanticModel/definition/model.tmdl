@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["DossierMetriques", "fnLireCsv", "dim_batch", "fact_rule_result", "fact_column_completeness", "fact_drift", "fact_alert", "dim_rule", "fact_run", "fact_fault_eval", "fact_detector_eval", "dim_run", "_Mesures"]
+annotation PBI_QueryOrder = ["SourceMetriques", "fnLireCsv", "dim_batch", "fact_rule_result", "fact_column_completeness", "fact_drift", "fact_alert", "dim_rule", "fact_run", "fact_fault_eval", "fact_detector_eval", "dim_run", "_Mesures"]
 
 annotation PBI_ProTooling = ["DevMode"]
 

@@ -1,10 +1,10 @@
 /// Mesures des expériences de performance E1–E4.
 table fact_run
-	lineageTag: b9ebf5a5-f043-4d89-82bb-55b652a38ce8
+	lineageTag: 339d5040-5f74-4017-be91-9750d10d317a
 
 	column run_id
 		dataType: string
-		lineageTag: a56381e4-9168-4274-a6d9-38dc7e6ab04f
+		lineageTag: c23d0a8a-1fcc-48cb-93b0-03ff5968e1f1
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table fact_run
 
 	column experiment
 		dataType: string
-		lineageTag: 9d3a0ab1-7743-4d7b-8c52-4721618c6806
+		lineageTag: 091af376-a730-46f8-ae60-7e1f15c34749
 		summarizeBy: none
 		sourceColumn: experiment
 
@@ -20,7 +20,7 @@ table fact_run
 
 	column engine
 		dataType: string
-		lineageTag: 0b2042d6-723a-4974-aafe-96f79dcbc153
+		lineageTag: 37f44ce4-1a69-47f5-8dc0-b0e73f095cc5
 		summarizeBy: none
 		sourceColumn: engine
 
@@ -28,7 +28,7 @@ table fact_run
 
 	column cores
 		dataType: string
-		lineageTag: 7237b99d-ab8d-41c5-9742-d27280bf68b3
+		lineageTag: 52a84f16-32a8-4cb2-bb54-19474e91760b
 		summarizeBy: none
 		sourceColumn: cores
 
@@ -36,7 +36,7 @@ table fact_run
 
 	column input_format
 		dataType: string
-		lineageTag: e922732f-4b9f-4e68-980f-dd2fcb4aa128
+		lineageTag: ad285c05-f975-447b-86ee-30b5505dd0fe
 		summarizeBy: none
 		sourceColumn: input_format
 
@@ -44,7 +44,7 @@ table fact_run
 
 	column mode
 		dataType: string
-		lineageTag: cbb25d0c-82c0-482d-8470-68e3a8e3c7ec
+		lineageTag: 4a8f7d3e-830a-4fc2-8cc7-69ce9eb966c2
 		summarizeBy: none
 		sourceColumn: mode
 
@@ -53,7 +53,7 @@ table fact_run
 	column fraction
 		dataType: double
 		formatString: 0.00
-		lineageTag: 2a1f5adf-d322-4c6c-bd70-1ed6044259f1
+		lineageTag: 985542c6-acc1-406f-9d62-fb9212fd8251
 		summarizeBy: none
 		sourceColumn: fraction
 
@@ -61,7 +61,7 @@ table fact_run
 
 	column rows
 		dataType: int64
-		lineageTag: 5fafb3d4-a44f-461b-884f-d2779e6d7684
+		lineageTag: 5470ffbf-9f74-43a9-9a22-2ec635d19a51
 		summarizeBy: sum
 		sourceColumn: rows
 
@@ -69,7 +69,7 @@ table fact_run
 
 	column repeat
 		dataType: int64
-		lineageTag: 660bb07b-3e2c-4511-8adb-4c28d364fd25
+		lineageTag: 1feaaf66-18fb-4f1c-9a4e-44a4227759d4
 		summarizeBy: none
 		sourceColumn: repeat
 
@@ -78,7 +78,7 @@ table fact_run
 	column total_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3eabff98-9bed-4519-b32c-df52890e1fc2
+		lineageTag: ab54cc6b-8ac4-4057-99f5-12e3f9045216
 		summarizeBy: sum
 		sourceColumn: total_s
 
@@ -87,7 +87,7 @@ table fact_run
 	column load_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 02ee87e3-59a0-4149-8131-a4b2030b815c
+		lineageTag: 0010b0e3-d65b-47b9-8efe-582e4638836a
 		summarizeBy: sum
 		sourceColumn: load_s
 
@@ -96,7 +96,7 @@ table fact_run
 	column rules_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 42f37fe8-4cbc-4a96-aadd-5b84d549b592
+		lineageTag: 2ff1c046-b038-4147-997a-ff6c4ae965ca
 		summarizeBy: sum
 		sourceColumn: rules_s
 
@@ -105,7 +105,7 @@ table fact_run
 	column detectors_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: d6e1c4e8-b4d3-45d7-95d8-8629b9732c4c
+		lineageTag: cf5bbeb8-fc8f-4a82-aefc-c08e48073894
 		summarizeBy: sum
 		sourceColumn: detectors_s
 
@@ -114,7 +114,7 @@ table fact_run
 	column write_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 1f9bfb3c-2e6e-43f9-899a-46c60bb6c713
+		lineageTag: 289f7c67-4aaa-4e90-b789-a6ec15cb1638
 		summarizeBy: sum
 		sourceColumn: write_s
 
@@ -123,7 +123,7 @@ table fact_run
 	column rows_per_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 6397a560-d8f4-4a41-a27c-b24a0fe8519a
+		lineageTag: 2d1f7e38-eb1e-41e9-9021-3c48ca1a327c
 		summarizeBy: sum
 		sourceColumn: rows_per_s
 
@@ -132,7 +132,7 @@ table fact_run
 	column peak_mem_mb
 		dataType: double
 		formatString: 0.00
-		lineageTag: 9ff9581b-499d-46be-ab49-16b163fcff4e
+		lineageTag: f9031e31-c7a6-42e5-990f-77f2420cbdf4
 		summarizeBy: sum
 		sourceColumn: peak_mem_mb
 
@@ -140,7 +140,7 @@ table fact_run
 
 	column alerts
 		dataType: int64
-		lineageTag: 482e2102-5cef-421d-82d3-6c1a1bc625b6
+		lineageTag: 71df013e-980d-4ec0-9cf1-15debe760cc3
 		summarizeBy: sum
 		sourceColumn: alerts
 
@@ -148,7 +148,7 @@ table fact_run
 
 	column status
 		dataType: string
-		lineageTag: 3cf2edf6-31a2-494d-831a-a25c522a0799
+		lineageTag: 514851d9-21de-4617-b128-c9e5b95350d9
 		summarizeBy: none
 		sourceColumn: status
 
@@ -156,7 +156,7 @@ table fact_run
 
 	column started_at
 		dataType: string
-		lineageTag: 8fbdcb60-4991-4aa1-92e2-85c22fa7ed61
+		lineageTag: 1a3207c0-fc44-43f7-a7b3-9b58a526a938
 		summarizeBy: none
 		sourceColumn: started_at
 
@@ -164,7 +164,7 @@ table fact_run
 
 	column Coeurs
 		dataType: string
-		lineageTag: 938e779c-7948-454b-9468-0c44efb9d400
+		lineageTag: 0dde7a68-ab93-4a67-9be4-e838d92673e8
 		summarizeBy: none
 		sourceColumn: Coeurs
 
@@ -173,7 +173,7 @@ table fact_run
 	column 'Millions de lignes'
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3d62ad72-523c-456d-b4b5-94a27d19a6c4
+		lineageTag: 9fcb0d36-004c-4331-bb42-6cf53a5785dd
 		summarizeBy: sum
 		sourceColumn: Millions de lignes
 

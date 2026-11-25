@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.4.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY24SU10",
@@ -13,7 +13,7 @@
     "customTheme": {
       "name": "DataQualityTheme.json",
       "reportVersionAtImport": {
-        "visual": "2.14.0",
+        "visual": "2.15.0",
         "report": "3.4.0",
         "page": "2.3.1"
       },
@@ -51,5 +51,6 @@
     "allowChangeFilterTypes": true,
     "useEnhancedTooltips": true,
     "useDefaultAggregateDisplayName": true
-  }
+  },
+  "linguisticSchemaSyncVersion": 2
 }

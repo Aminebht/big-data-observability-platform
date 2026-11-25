@@ -1,10 +1,10 @@
 /// Exécutions de surveillance (clean = données d'origine, faulty = 12 lots abîmés volontairement).
 table dim_run
-	lineageTag: 7a6366be-b812-4d5b-9a91-f4a2da800a4b
+	lineageTag: ea20bbe4-ea6a-474b-b7f0-ed230b4128db
 
 	column run_id
 		dataType: string
-		lineageTag: e6faafb0-0318-494d-a0b7-685bdd8ff044
+		lineageTag: 3b960ca8-d0ea-49a9-8ae7-4882a2b9e3bd
 		summarizeBy: none
 		sourceColumn: run_id
 

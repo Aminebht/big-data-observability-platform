@@ -1,10 +1,10 @@
 /// Évaluation : chaque défaut injecté et les règles/détecteurs qui l'ont détecté.
 table fact_fault_eval
-	lineageTag: 9d1514e7-e4fb-45e4-b9d4-af578d0eb6cb
+	lineageTag: 54bf9898-f8f9-43df-9972-389e33ac3751
 
 	column batch_month
 		dataType: string
-		lineageTag: e574f64d-08f7-41d5-8be7-c2a203fbc2c4
+		lineageTag: c7a25c0f-ce65-4c91-afab-e0f24f338357
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -12,7 +12,7 @@ table fact_fault_eval
 
 	column fault_type
 		dataType: string
-		lineageTag: 0717a048-b495-4f37-8b83-e0d096acf497
+		lineageTag: eaf8dc68-d686-4fac-bb9e-d2f680401252
 		summarizeBy: none
 		sourceColumn: fault_type
 
@@ -20,7 +20,7 @@ table fact_fault_eval
 
 	column description
 		dataType: string
-		lineageTag: 2fae4aaa-cdbc-48c8-b757-953fa2f01e08
+		lineageTag: 6fbd2b17-4024-4428-9be0-cb6fed341729
 		summarizeBy: none
 		sourceColumn: description
 
@@ -28,7 +28,7 @@ table fact_fault_eval
 
 	column expected
 		dataType: string
-		lineageTag: 0607d08a-cbd4-4826-a3c5-5f2d56b77962
+		lineageTag: a9020da0-d221-405c-8aea-92450c887377
 		summarizeBy: none
 		sourceColumn: expected
 
@@ -36,7 +36,7 @@ table fact_fault_eval
 
 	column detected_by
 		dataType: string
-		lineageTag: 271f7aaa-f207-4f49-9220-3c8f68d6d2a7
+		lineageTag: f4922d4f-e519-48f4-8242-31e8cc3a402e
 		summarizeBy: none
 		sourceColumn: detected_by
 
@@ -44,7 +44,7 @@ table fact_fault_eval
 
 	column detected
 		dataType: boolean
-		lineageTag: 02a52bc3-24a9-4b1c-9e9c-d78b675f01c0
+		lineageTag: 12674336-47f0-45f0-a223-471a7f97ab5d
 		summarizeBy: none
 		sourceColumn: detected
 
@@ -52,7 +52,7 @@ table fact_fault_eval
 
 	column expected_hit
 		dataType: boolean
-		lineageTag: 856799c0-529a-48ff-8686-42f216da2ed9
+		lineageTag: 964546cb-4ed2-45cd-9736-e3f25bb93984
 		summarizeBy: none
 		sourceColumn: expected_hit
 
@@ -60,7 +60,7 @@ table fact_fault_eval
 
 	column new_alerts
 		dataType: int64
-		lineageTag: 16efbbfe-b61a-42e2-acd6-1b55070ea7d9
+		lineageTag: f705c1eb-3e17-4362-817d-b372bbba88ea
 		summarizeBy: sum
 		sourceColumn: new_alerts
 

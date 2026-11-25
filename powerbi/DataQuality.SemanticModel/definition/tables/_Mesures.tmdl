@@ -1,228 +1,228 @@
 /// Table dédiée aux mesures DAX (aucune donnée).
 table _Mesures
-	lineageTag: ea7357b2-9474-436e-b151-4f487d9ccf39
+	lineageTag: d8ae2259-d7fd-452a-8fce-e5b49490662e
 
 	measure 'Enregistrements analysés' = SUM(dim_batch[rows])
 		formatString: #,0
 		displayFolder: 1. Volume
-		lineageTag: 73bb82d8-a82c-4612-bae0-315b38ebf58b
+		lineageTag: ef5cc74b-5f14-4cd3-a09b-c63bb8ca5e99
 
 	measure 'Lots traités' = DISTINCTCOUNT(dim_batch[BatchKey])
 		formatString: #,0
 		displayFolder: 1. Volume
-		lineageTag: fe88a97c-f330-4534-8d9b-332eaa754681
+		lineageTag: 2cff5e8c-e1d2-49c5-90d8-d50718dd41f6
 
 	measure 'Score global' = DIVIDE(SUMX(dim_batch, dim_batch[global_score] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: 9e6f44df-09d0-48ec-8919-bfd2ca92f0aa
+		lineageTag: 2aedacf2-5dfd-451b-9286-f2eaeedabdc1
 
 	measure 'Score complétude' = DIVIDE(SUMX(dim_batch, dim_batch[score_completeness] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: a56ba8f0-3959-4946-9543-bc41fd656a85
+		lineageTag: 27c2ab91-ee31-4670-a140-2a5081b43e23
 
 	measure 'Score unicité' = DIVIDE(SUMX(dim_batch, dim_batch[score_uniqueness] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: 5f818eac-3349-4ad9-9489-ea49112a0198
+		lineageTag: bdfc9972-4956-42ce-b99b-40ae770643eb
 
 	measure 'Score validité' = DIVIDE(SUMX(dim_batch, dim_batch[score_validity] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: 2fbbae29-fbe5-44c7-995a-1161cc8dfd36
+		lineageTag: 186c4fc4-7e86-4e8a-992c-7f31eb59ef52
 
 	measure 'Score cohérence' = DIVIDE(SUMX(dim_batch, dim_batch[score_consistency] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: 922001bb-d5d5-41c1-a95f-6787ec71c68f
+		lineageTag: e72036a0-f414-4f04-9a82-9d24d658e297
 
 	measure 'Score conformité' = DIVIDE(SUMX(dim_batch, dim_batch[score_conformity] * dim_batch[rows]), SUM(dim_batch[rows]))
 		formatString: 0.00
 		displayFolder: 2. Score
-		lineageTag: 5c3dbc75-4c58-4f9d-bd07-ced0eb3c37e8
+		lineageTag: 12de34cb-48f5-47e3-b06e-b3a31eb20cbc
 
 	measure 'Objectif score' = 95
 		formatString: 0
 		displayFolder: 2. Score
-		lineageTag: 37642fb2-d0c0-41f8-b4e7-69ce236d1f8e
+		lineageTag: f3851ba7-cc90-4ea3-be85-3b4f8b65e55f
 
 	measure 'Seuil critique' = 85
 		formatString: 0
 		displayFolder: 2. Score
-		lineageTag: dd123e37-8177-4aa3-9c4d-69e3e06cd014
+		lineageTag: 94cf4ce9-34ca-49c1-9ad7-15255716099a
 
 	measure 'Statut global' = VAR s = [Score global] RETURN SWITCH(TRUE(), ISBLANK(s), BLANK(), s >= 95, "Sain", s >= 85, "Avertissement", "Critique")
 		displayFolder: 2. Score
-		lineageTag: 83f63856-2c42-47a7-bef0-5dc6d5381a8c
+		lineageTag: 54347cfd-1d70-40b5-ab46-ac5f222ec8d8
 
 	measure 'Lots sains' = CALCULATE([Lots traités], dim_batch[status] = "healthy")
 		formatString: #,0
 		displayFolder: 2. Score
-		lineageTag: b71ea288-92a4-4178-9adf-d1f24622842b
+		lineageTag: 68392400-e4c3-4ab8-8a76-3301a660976e
 
 	measure 'Lots en avertissement' = CALCULATE([Lots traités], dim_batch[status] = "warning")
 		formatString: #,0
 		displayFolder: 2. Score
-		lineageTag: eecc36ca-4d6c-4885-a39e-511f9a5de877
+		lineageTag: d77c314e-a4cf-4e27-9005-05b49af06421
 
 	measure 'Lots critiques' = CALCULATE([Lots traités], dim_batch[status] = "critical")
 		formatString: #,0
 		displayFolder: 2. Score
-		lineageTag: d90a354a-9a18-4a07-9eab-572abcc79fcc
+		lineageTag: d3346fa1-576a-4fdf-aca3-d2427dbd02d2
 
 	measure 'Dernier mois' = MAX(dim_batch[batch_month])
 		displayFolder: 2. Score
-		lineageTag: 6075678b-fa9f-4aa2-85b3-d345cf0e2cbf
+		lineageTag: b9b8b692-8982-4904-b01f-2d5ccd92b78c
 
 	measure 'Statut dernier lot' = VAR m = [Dernier mois] RETURN CALCULATE(SELECTEDVALUE(dim_batch[Statut]), dim_batch[batch_month] = m)
 		displayFolder: 2. Score
-		lineageTag: 718f7c89-f731-45e8-aa5f-be55eccfd084
+		lineageTag: a95a51f8-6ac1-4904-9f99-408199576dd2
 
 	measure 'Taux de complétude' = DIVIDE(SUM(fact_column_completeness[rows]) - SUM(fact_column_completeness[missing]), SUM(fact_column_completeness[rows]))
 		formatString: 0.0%
 		displayFolder: 3. Complétude
-		lineageTag: 54934e03-8853-4507-a739-a8485da32cf1
+		lineageTag: 03f82911-8264-4857-a4cd-fbbf8d3922fe
 
 	measure 'Taux de valeurs manquantes' = DIVIDE(SUM(fact_column_completeness[missing]), SUM(fact_column_completeness[rows]))
 		formatString: 0.0%
 		displayFolder: 3. Complétude
-		lineageTag: d4e69845-403f-4e69-899f-ed01db47b9d3
+		lineageTag: c550a213-75c2-4099-8d09-04fd16719c63
 
 	measure 'Erreurs détectées' = SUM(fact_rule_result[rows_failed])
 		formatString: #,0
 		displayFolder: 4. Règles
-		lineageTag: 43bb70b7-d3d1-412f-b6d4-eb292c38c9a5
+		lineageTag: ae71b82a-9016-4c42-a88f-50df37bb28cb
 
 	measure 'Lignes contrôlées' = SUM(fact_rule_result[rows_checked])
 		formatString: #,0
 		displayFolder: 4. Règles
-		lineageTag: 7af02020-543c-40dd-830c-5f78e200320a
+		lineageTag: dc0a36f9-9786-463d-81d3-98115996d972
 
 	measure 'Taux de conformité' = 1 - DIVIDE([Erreurs détectées], [Lignes contrôlées])
 		formatString: 0.00%
 		displayFolder: 4. Règles
-		lineageTag: 5cd22182-7365-4db7-8535-86e319a73403
+		lineageTag: c85eeb82-ce85-4d1d-958e-47702dc4546f
 
 	measure 'Erreurs (règles notées)' = CALCULATE([Erreurs détectées], fact_rule_result[mode] = "score")
 		formatString: #,0
 		displayFolder: 4. Règles
-		lineageTag: fe6ea432-7d59-4f1f-aad5-8bbc5359d4b5
+		lineageTag: b382e1c2-d1f7-405a-88f8-ebc285d88864
 
 	measure 'Règles en échec' = CALCULATE(COUNTROWS(fact_rule_result), fact_rule_result[status] = "fail")
 		formatString: #,0
 		displayFolder: 4. Règles
-		lineageTag: a7ac69b6-44c7-4fb6-9dfd-c9a174bfd44d
+		lineageTag: 599b954b-7c56-4906-9bef-1df1505b3750
 
 	measure Alertes = DISTINCTCOUNT(fact_alert[alert_id])
 		formatString: #,0
 		displayFolder: 5. Alertes
-		lineageTag: 372b1f79-9fde-487a-b368-646fc212461d
+		lineageTag: c3a94cd8-0d31-4068-b256-e75b87bab8a0
 
 	measure 'Alertes critiques' = CALCULATE([Alertes], fact_alert[severity] = "CRITICAL")
 		formatString: #,0
 		displayFolder: 5. Alertes
-		lineageTag: 65164a21-00f6-4a3e-aaf1-5c0ee50b60f5
+		lineageTag: f79d55c4-64aa-4bab-82c9-3fed7917a286
 
 	measure 'Alertes avertissement' = CALCULATE([Alertes], fact_alert[severity] = "WARNING")
 		formatString: #,0
 		displayFolder: 5. Alertes
-		lineageTag: cc464048-c440-4015-8855-0fed3454e782
+		lineageTag: 987e3d59-eeb3-43d1-a385-7637c9692362
 
 	measure 'Alertes info' = CALCULATE([Alertes], fact_alert[severity] = "INFO")
 		formatString: #,0
 		displayFolder: 5. Alertes
-		lineageTag: 2677abc5-008b-401a-8bd8-9ee56b9e6d63
+		lineageTag: 2bd84b41-8cb2-40ac-97a0-fac35aea41c7
 
 	measure 'Anomalies détectées' = CALCULATE(COUNTROWS(fact_drift), fact_drift[is_anomaly] = TRUE())
 		formatString: #,0
 		displayFolder: 6. Dérive
-		lineageTag: 643d992c-63d8-45bf-a964-d422fc3d80c3
+		lineageTag: 504f72d4-9ed9-4b2a-bb1c-9994dfcea600
 
 	measure 'Dérive de distribution' = CALCULATE(MAX(fact_drift[value]), fact_drift[detector] IN {"numeric_drift", "categorical_drift"})
 		formatString: 0.00
 		displayFolder: 6. Dérive
-		lineageTag: 38df732b-010b-4648-aced-10ca735fba13
+		lineageTag: a911a2c2-ccd6-4bf1-b91c-9b5e2ff06900
 
 	measure 'Z-score volume' = CALCULATE(AVERAGE(fact_drift[value]), fact_drift[detector] = "volume", dim_batch[batch_id] > 12)
 		formatString: 0.0
 		displayFolder: 6. Dérive
-		lineageTag: 90b6cec5-c2b1-4ef4-b13c-b82c54ed9374
+		lineageTag: 352cf803-1855-4eb6-bfff-c129cf3fdde4
 
 	measure 'Défauts injectés' = COUNTROWS(fact_fault_eval)
 		formatString: #,0
 		displayFolder: 7. Évaluation
-		lineageTag: f5d25b93-874e-464f-a1e8-1fc52d8e79e0
+		lineageTag: 5b1fd585-06d7-42a2-bc54-2c655f69b49e
 
 	measure 'Défauts détectés' = CALCULATE(COUNTROWS(fact_fault_eval), fact_fault_eval[detected] = TRUE())
 		formatString: #,0
 		displayFolder: 7. Évaluation
-		lineageTag: c24e1c1b-445e-4ddf-bad2-6f54bc34a083
+		lineageTag: b7f2f3f5-c185-491f-9981-7a2b13b35297
 
 	measure Rappel = DIVIDE([Défauts détectés], [Défauts injectés])
 		formatString: 0%
 		displayFolder: 7. Évaluation
-		lineageTag: 117e06fd-3e09-48c8-8a7e-f4a4889824ab
+		lineageTag: 7f318f58-eb0c-4b23-a022-b9fc4e8e02e5
 
 	measure Précision = DIVIDE(SUM(fact_detector_eval[tp]), SUM(fact_detector_eval[total]))
 		formatString: 0%
 		displayFolder: 7. Évaluation
-		lineageTag: 836ac470-ca72-4b48-85cb-c92fa79e19fb
+		lineageTag: 6b066764-1a0a-4005-9df3-d6faf37ed3e0
 
 	measure 'Temps médian (s)' = CALCULATE(MEDIAN(fact_run[total_s]), fact_run[status] = "ok")
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: d9485c07-de19-42e3-afcd-e05eba9dcebb
+		lineageTag: 2a6c670b-418c-4774-be0a-35047d46373b
 
 	measure 'Temps E1 (s)' = CALCULATE([Temps médian (s)], fact_run[experiment] = "E1")
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: 92a130ba-dcb6-41d0-8861-07055cd63e38
+		lineageTag: 35b6cfd5-dd96-493b-9818-f35475069c7e
 
 	measure 'Temps E2 (s)' = CALCULATE([Temps médian (s)], fact_run[experiment] = "E2")
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: 5068fdc7-8012-4e41-b5c0-84d49665ba81
+		lineageTag: 9d23a43f-9115-4ad7-b522-2524dd74100f
 
 	measure 'Temps E3 (s)' = CALCULATE([Temps médian (s)], fact_run[experiment] = "E3")
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: b0bef42d-f11a-412c-ad8e-351e57cc8bdf
+		lineageTag: 267f0d9b-e69c-41d1-b5f2-65eee5bb5421
 
 	measure 'Temps E4 (s)' = CALCULATE([Temps médian (s)], fact_run[experiment] = "E4")
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: f9568b8e-7029-47ba-864f-d2842612ca6d
+		lineageTag: cbc7e293-1319-4e2b-b573-5afddc8b2c4b
 
 	measure 'Mémoire E1 (Go)' = CALCULATE(MEDIAN(fact_run[peak_mem_mb]), fact_run[experiment] = "E1", fact_run[status] = "ok") / 1024
 		formatString: 0.0
 		displayFolder: 8. Performance
-		lineageTag: 0767a759-d28f-4363-bfb2-ea0ca25be7ab
+		lineageTag: 48861719-85b9-4677-94fe-1b3a66ca305a
 
 	measure 'Débit max (lignes/s)' = CALCULATE(MAX(fact_run[rows_per_s]), fact_run[status] = "ok")
 		formatString: #,0
 		displayFolder: 8. Performance
-		lineageTag: 421f8d8d-61f4-47eb-a347-12a6237ce1c2
+		lineageTag: 9214af94-c736-4fec-9976-02362cbe488e
 
 	measure 'Mesures hors mémoire' = CALCULATE(COUNTROWS(fact_run), fact_run[status] = "out_of_memory")
 		formatString: #,0
 		displayFolder: 8. Performance
-		lineageTag: e21a629a-5151-4071-8152-1e67799da2d8
+		lineageTag: d9568e76-7cb5-42ab-b98a-7b0d67fd536d
 
 	measure 'Seuil volume haut' = IF(ISBLANK([Z-score volume]), BLANK(), 5)
 		formatString: 0
 		displayFolder: 6. Dérive
-		lineageTag: 553b5ae2-f823-4e57-9dab-2f6d8a1630ad
+		lineageTag: 4f7b98df-2f1b-42b3-8a8d-06d6163079d7
 
 	measure 'Seuil volume bas' = IF(ISBLANK([Z-score volume]), BLANK(), -5)
 		formatString: 0
 		displayFolder: 6. Dérive
-		lineageTag: fcaffbcf-9f8e-4405-986a-64cabed10d55
+		lineageTag: 98fc8bf7-8590-4fba-a15d-a93b06812676
 
 	column Value
 		dataType: string
 		isHidden
-		lineageTag: c517c358-3f3f-4c68-a212-b5aaa3ed89ca
+		lineageTag: 6dcb504a-3f96-4ccd-a65c-b7d568fdd067
 		summarizeBy: none
 		sourceColumn: Value
 

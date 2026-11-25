@@ -1,10 +1,10 @@
 /// Résultat de chaque règle de qualité sur chaque lot.
 table fact_rule_result
-	lineageTag: 292e9842-740a-43bc-9dd1-6e156691e8e5
+	lineageTag: 727c38a1-bf82-486c-abb7-0feb744d006d
 
 	column run_id
 		dataType: string
-		lineageTag: ae887e0b-bdc4-4e1e-9642-65eef3a2cc02
+		lineageTag: ee63aee4-fea6-455c-96d8-e3f879ef8694
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table fact_rule_result
 
 	column batch_id
 		dataType: int64
-		lineageTag: e6ed3cac-aa0f-4bd8-8149-30b506574220
+		lineageTag: 175f231f-817e-448c-8fa1-75ba51225ab9
 		summarizeBy: none
 		sourceColumn: batch_id
 
@@ -20,7 +20,7 @@ table fact_rule_result
 
 	column batch_month
 		dataType: string
-		lineageTag: 34368707-cdc0-4f42-a88a-18cdd640699c
+		lineageTag: 97c7e55d-a0d0-412d-a63c-eaad94de3021
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -28,7 +28,7 @@ table fact_rule_result
 
 	column rule_id
 		dataType: string
-		lineageTag: 076ccefe-b9c5-4f7f-9d04-fe4672ddcbc2
+		lineageTag: b6e1c684-3153-4dd1-9d99-478edf087b89
 		summarizeBy: none
 		sourceColumn: rule_id
 
@@ -36,7 +36,7 @@ table fact_rule_result
 
 	column dimension
 		dataType: string
-		lineageTag: e46cc7b9-986a-496f-9ea3-af86a11e9dc3
+		lineageTag: 66c99548-e122-42f2-ba9c-068e80ed2352
 		summarizeBy: none
 		sourceColumn: dimension
 
@@ -44,7 +44,7 @@ table fact_rule_result
 
 	column severity
 		dataType: string
-		lineageTag: 99ba53e4-4a32-4701-839e-a287458592c2
+		lineageTag: 9e3f2ef0-be5f-4ae1-8565-d33de6786d75
 		summarizeBy: none
 		sourceColumn: severity
 
@@ -52,7 +52,7 @@ table fact_rule_result
 
 	column mode
 		dataType: string
-		lineageTag: db66f762-0b75-48aa-9f07-cb113c98b442
+		lineageTag: 762cf148-64f8-4924-bf39-5e35f2f4cc41
 		summarizeBy: none
 		sourceColumn: mode
 
@@ -60,7 +60,7 @@ table fact_rule_result
 
 	column rows_checked
 		dataType: int64
-		lineageTag: 2412e1fb-a7a5-4007-8287-591f7797f44a
+		lineageTag: 9031c872-b477-402e-a168-2750b79f05ed
 		summarizeBy: sum
 		sourceColumn: rows_checked
 
@@ -68,7 +68,7 @@ table fact_rule_result
 
 	column rows_failed
 		dataType: int64
-		lineageTag: e0130943-0b66-4730-97e2-e1e95f68a070
+		lineageTag: 08aaddef-229e-40a8-abb6-400eb6f82fb7
 		summarizeBy: sum
 		sourceColumn: rows_failed
 
@@ -77,7 +77,7 @@ table fact_rule_result
 	column failure_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8bbfc473-d0aa-4c13-83bb-81799a64d8ba
+		lineageTag: 108adc8b-2445-4a68-bafa-3869dab704fb
 		summarizeBy: sum
 		sourceColumn: failure_rate
 
@@ -86,7 +86,7 @@ table fact_rule_result
 	column conformity_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: ebcaf1d7-a147-4fce-8793-1d59ad57b9ce
+		lineageTag: 8717e132-cb2a-457d-a508-72fc0bfd0804
 		summarizeBy: sum
 		sourceColumn: conformity_rate
 
@@ -94,7 +94,7 @@ table fact_rule_result
 
 	column status
 		dataType: string
-		lineageTag: c3196405-53a4-43a9-a1e0-fef65f67eef4
+		lineageTag: 6dbc5b06-637d-491a-b907-c0f2e40e8d41
 		summarizeBy: none
 		sourceColumn: status
 
@@ -103,7 +103,7 @@ table fact_rule_result
 	column BatchKey
 		dataType: string
 		isHidden
-		lineageTag: 25058c89-1dea-4110-85cb-c8b9c97da3bc
+		lineageTag: aae33816-56f6-408c-b087-401c94b0d8bc
 		summarizeBy: none
 		sourceColumn: BatchKey
 

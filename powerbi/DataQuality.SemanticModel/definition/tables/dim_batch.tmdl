@@ -1,10 +1,10 @@
 /// Un lot mensuel traité par le flux : volume, scores par dimension, statut, défaut injecté.
 table dim_batch
-	lineageTag: a30dc095-8fcc-4100-bad3-24ccd73d0542
+	lineageTag: 89b6f9ff-5a0e-4d57-8b0a-d98cb98b18f8
 
 	column run_id
 		dataType: string
-		lineageTag: 634fb283-5e16-4c7c-b784-8e8c449833a2
+		lineageTag: 6f24c451-409a-4e6a-81e2-d082f74c02d9
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table dim_batch
 
 	column batch_id
 		dataType: int64
-		lineageTag: ffb4d2e0-16d1-4ff5-a91f-0da2f218d937
+		lineageTag: a1e7faa2-496d-41bc-86c1-a1b68c6390a2
 		summarizeBy: none
 		sourceColumn: batch_id
 
@@ -20,7 +20,7 @@ table dim_batch
 
 	column batch_month
 		dataType: string
-		lineageTag: 8c6a6912-1114-4c49-8896-2051c6741ba4
+		lineageTag: 5b2b67be-5767-4265-bc57-798f08cd6306
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -28,7 +28,7 @@ table dim_batch
 
 	column rows
 		dataType: int64
-		lineageTag: bb61e96c-5651-47a1-a33a-d35e7e74c889
+		lineageTag: f32e868a-e562-42d8-a381-13b0aabbb7ca
 		summarizeBy: sum
 		sourceColumn: rows
 
@@ -36,7 +36,7 @@ table dim_batch
 
 	column processed_at
 		dataType: string
-		lineageTag: 6dbe2d86-2be4-42f1-9e8a-910b6a1f6af0
+		lineageTag: 4fd1bed0-6db7-4f40-9b59-25ecb8a48c03
 		summarizeBy: none
 		sourceColumn: processed_at
 
@@ -45,7 +45,7 @@ table dim_batch
 	column duration_s
 		dataType: double
 		formatString: 0.00
-		lineageTag: 55df456d-3408-4837-88b7-2285d0f31a17
+		lineageTag: 3346d8d0-1175-4230-99d1-af6964e6efae
 		summarizeBy: sum
 		sourceColumn: duration_s
 
@@ -54,7 +54,7 @@ table dim_batch
 	column global_score
 		dataType: double
 		formatString: 0.00
-		lineageTag: 0082540d-5601-4596-9bbe-93ff65a9c9b7
+		lineageTag: cfaf9136-0927-4afb-8795-7f0ae848ee9a
 		summarizeBy: sum
 		sourceColumn: global_score
 
@@ -62,7 +62,7 @@ table dim_batch
 
 	column status
 		dataType: string
-		lineageTag: bad31d31-c0db-4e4c-a275-fff77471356e
+		lineageTag: 00681ae8-8cc5-4c76-b049-450cf44b0067
 		summarizeBy: none
 		sourceColumn: status
 
@@ -70,7 +70,7 @@ table dim_batch
 
 	column forced_reasons
 		dataType: string
-		lineageTag: cc74f190-1f07-4d41-b84e-04f9420c7cf9
+		lineageTag: 8d9133e0-83ca-4003-8c6a-ce2de5111d40
 		summarizeBy: none
 		sourceColumn: forced_reasons
 
@@ -79,7 +79,7 @@ table dim_batch
 	column score_completeness
 		dataType: double
 		formatString: 0.00
-		lineageTag: 065a7184-930f-4363-a66c-9ebebf4f2812
+		lineageTag: 78ea56b4-7bb9-4a0e-ae13-19608dcd4ba7
 		summarizeBy: sum
 		sourceColumn: score_completeness
 
@@ -88,7 +88,7 @@ table dim_batch
 	column score_uniqueness
 		dataType: double
 		formatString: 0.00
-		lineageTag: ddeae964-13f8-4e9e-b7b4-955bad90c890
+		lineageTag: ae01d456-d293-438a-9a56-4a6d4d940f04
 		summarizeBy: sum
 		sourceColumn: score_uniqueness
 
@@ -97,7 +97,7 @@ table dim_batch
 	column score_validity
 		dataType: double
 		formatString: 0.00
-		lineageTag: e15ebbc2-7674-4989-9610-2b31ce0b66cf
+		lineageTag: abb91e2d-1795-4512-8005-06791857d532
 		summarizeBy: sum
 		sourceColumn: score_validity
 
@@ -106,7 +106,7 @@ table dim_batch
 	column score_consistency
 		dataType: double
 		formatString: 0.00
-		lineageTag: b899229c-e35d-47a7-87c3-91b947dce51f
+		lineageTag: ee17a516-ad35-4c76-a0ca-432358cd8f8f
 		summarizeBy: sum
 		sourceColumn: score_consistency
 
@@ -115,7 +115,7 @@ table dim_batch
 	column score_conformity
 		dataType: double
 		formatString: 0.00
-		lineageTag: d276718c-7fec-4b4d-aa97-a963ccdddc4a
+		lineageTag: f0b88ddd-889b-42e7-9371-b5708885aa72
 		summarizeBy: sum
 		sourceColumn: score_conformity
 
@@ -123,7 +123,7 @@ table dim_batch
 
 	column schema_changed
 		dataType: boolean
-		lineageTag: da8b9e1a-80bd-4d0d-a4a1-32fdb6b98e84
+		lineageTag: 27480145-7ede-4e26-8e0f-e12ab9801e38
 		summarizeBy: none
 		sourceColumn: schema_changed
 
@@ -131,7 +131,7 @@ table dim_batch
 
 	column missing_columns
 		dataType: string
-		lineageTag: e55df8ce-670a-47bc-bb7e-d60c5851946c
+		lineageTag: ceec9978-c151-466a-8a51-780fe40c168b
 		summarizeBy: none
 		sourceColumn: missing_columns
 
@@ -139,7 +139,7 @@ table dim_batch
 
 	column extra_columns
 		dataType: string
-		lineageTag: 582bf323-34b4-4601-aea2-5321601c1592
+		lineageTag: aa02c29a-676c-4f69-86d5-3b3238af8d4e
 		summarizeBy: none
 		sourceColumn: extra_columns
 
@@ -147,7 +147,7 @@ table dim_batch
 
 	column planted_faults
 		dataType: string
-		lineageTag: eea21b8b-5dcb-46c9-9fe6-578bf340a8db
+		lineageTag: 31b7d0b9-07fa-426f-9145-abe93970b49a
 		summarizeBy: none
 		sourceColumn: planted_faults
 
@@ -156,7 +156,7 @@ table dim_batch
 	column Date
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: 27bc8a05-a237-408c-b0f5-e3f179efade4
+		lineageTag: 3b28ad8d-8b61-43b7-bd90-0cbb8e45bdd1
 		summarizeBy: none
 		sourceColumn: Date
 
@@ -166,7 +166,7 @@ table dim_batch
 
 	column Annee
 		dataType: string
-		lineageTag: 9692f584-7bd2-4957-9ce3-2ccad0b69bde
+		lineageTag: 6d7ff529-2d01-428f-83b5-03c6e657f0a7
 		summarizeBy: none
 		sourceColumn: Annee
 
@@ -174,7 +174,7 @@ table dim_batch
 
 	column Statut
 		dataType: string
-		lineageTag: fada0cd0-3ce8-41cf-90e6-be03d94c736a
+		lineageTag: e29d96e6-d4c9-4b27-a8c4-21d0e7e434fe
 		summarizeBy: none
 		sourceColumn: Statut
 
@@ -182,7 +182,7 @@ table dim_batch
 
 	column 'Defaut injecte'
 		dataType: string
-		lineageTag: ce244fa0-0df2-487d-8685-9034e4aa7a58
+		lineageTag: c007b79a-46ff-43da-b098-598eb1df0185
 		summarizeBy: none
 		sourceColumn: Defaut injecte
 
@@ -191,7 +191,7 @@ table dim_batch
 	column BatchKey
 		dataType: string
 		isHidden
-		lineageTag: 90c41404-60dc-49eb-836d-17de137039c7
+		lineageTag: a0afeca5-c45f-4c9b-9c9e-e01119b20543
 		summarizeBy: none
 		sourceColumn: BatchKey
 

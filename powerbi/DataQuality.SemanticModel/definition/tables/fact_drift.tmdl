@@ -1,10 +1,10 @@
 /// Mesures des détecteurs d'anomalies et de dérive par lot.
 table fact_drift
-	lineageTag: d5843e47-48f5-4ae5-ba2b-6a7343a6a5c3
+	lineageTag: e8875f3c-8baa-436b-a33d-7ef6acf3bba5
 
 	column run_id
 		dataType: string
-		lineageTag: 9f101ddc-778d-41e8-afe5-bf666ef3e025
+		lineageTag: cc7e47ec-911f-414a-be4f-440055dda510
 		summarizeBy: none
 		sourceColumn: run_id
 
@@ -12,7 +12,7 @@ table fact_drift
 
 	column batch_id
 		dataType: int64
-		lineageTag: c5fac4ec-764c-406c-a7fb-0cfa2b5c5448
+		lineageTag: 027f1628-295b-4baa-8138-258c55c96fdb
 		summarizeBy: none
 		sourceColumn: batch_id
 
@@ -20,7 +20,7 @@ table fact_drift
 
 	column batch_month
 		dataType: string
-		lineageTag: 13a136d8-4c6d-46e3-b7d1-359a4a34c7a3
+		lineageTag: acc0abb8-5925-4c89-a2b9-1ac6876bba6e
 		summarizeBy: none
 		sourceColumn: batch_month
 
@@ -28,7 +28,7 @@ table fact_drift
 
 	column detector
 		dataType: string
-		lineageTag: c63ad511-d5bc-4a03-95ee-7801feedc0fb
+		lineageTag: 677eabb9-1916-47e0-93dc-09414c9d75f1
 		summarizeBy: none
 		sourceColumn: detector
 
@@ -36,7 +36,7 @@ table fact_drift
 
 	column column
 		dataType: string
-		lineageTag: 54491d2e-228e-493b-8901-e1006794c322
+		lineageTag: f78bd93e-d04b-4051-9257-17851bad1d3b
 		summarizeBy: none
 		sourceColumn: column
 
@@ -44,7 +44,7 @@ table fact_drift
 
 	column method
 		dataType: string
-		lineageTag: b01e17f1-a25e-40b9-8084-cf2e60aabab0
+		lineageTag: a471e1ac-458f-4ca0-ae5a-af1655cefec4
 		summarizeBy: none
 		sourceColumn: method
 
@@ -53,7 +53,7 @@ table fact_drift
 	column value
 		dataType: double
 		formatString: 0.00
-		lineageTag: 7ca4729a-1a7b-45d6-a28b-3ff756b36b1a
+		lineageTag: 337d1d8a-5789-4a0d-a5ce-ad6f4fc79ff7
 		summarizeBy: sum
 		sourceColumn: value
 
@@ -62,7 +62,7 @@ table fact_drift
 	column reference
 		dataType: double
 		formatString: 0.00
-		lineageTag: dced1928-912b-4ab2-a581-2385ba472cc1
+		lineageTag: cdc6c558-30d7-4483-8665-98c97b2c8718
 		summarizeBy: sum
 		sourceColumn: reference
 
@@ -71,7 +71,7 @@ table fact_drift
 	column threshold
 		dataType: double
 		formatString: 0.00
-		lineageTag: 96ab9bf7-c0f5-4fdc-b776-1fa6d44bb98c
+		lineageTag: 3bfde185-fbaa-4eea-8a2e-6792db55fd44
 		summarizeBy: sum
 		sourceColumn: threshold
 
@@ -79,7 +79,7 @@ table fact_drift
 
 	column is_anomaly
 		dataType: boolean
-		lineageTag: e110df07-f115-43ab-a038-09f746fc133f
+		lineageTag: 5b5d8b88-7efc-4f11-86fb-6990625f91e0
 		summarizeBy: none
 		sourceColumn: is_anomaly
 
@@ -88,7 +88,7 @@ table fact_drift
 	column BatchKey
 		dataType: string
 		isHidden
-		lineageTag: c01348d0-9c67-4213-b407-dc52b62c7679
+		lineageTag: b5205a0d-04db-449b-b068-622772631f03
 		summarizeBy: none
 		sourceColumn: BatchKey
 

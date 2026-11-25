@@ -1,10 +1,10 @@
 /// Catalogue des règles (config/rules.yaml).
 table dim_rule
-	lineageTag: 0fd7ef65-e8ee-4dbd-a3fb-059086d41a63
+	lineageTag: 25da15e7-0a99-425b-b2d9-273a43102ef0
 
 	column rule_id
 		dataType: string
-		lineageTag: 5e644ab9-2964-48f8-9969-484d0281826f
+		lineageTag: 65c84429-7d57-4ece-9e35-ae230a81bcd0
 		summarizeBy: none
 		sourceColumn: rule_id
 
@@ -12,7 +12,7 @@ table dim_rule
 
 	column dimension
 		dataType: string
-		lineageTag: 797e396e-8d01-4bbc-8286-41611be83965
+		lineageTag: f506250e-3434-4bbb-b255-f2ae95d0f7fc
 		summarizeBy: none
 		sourceColumn: dimension
 
@@ -20,7 +20,7 @@ table dim_rule
 
 	column type
 		dataType: string
-		lineageTag: 92ce525e-38e4-4dd0-92df-f417c0ff956f
+		lineageTag: f494b7cc-e3fd-4124-b08f-fd2c7f5e5175
 		summarizeBy: none
 		sourceColumn: type
 
@@ -28,7 +28,7 @@ table dim_rule
 
 	column columns
 		dataType: string
-		lineageTag: 668c866c-5612-4e5a-889e-d8b615596372
+		lineageTag: ea92ad4e-ca02-4792-83f0-ed0fd68d6f24
 		summarizeBy: none
 		sourceColumn: columns
 
@@ -36,7 +36,7 @@ table dim_rule
 
 	column severity
 		dataType: string
-		lineageTag: abe32541-384a-4a74-b9ea-6136917e87b7
+		lineageTag: 0d33e041-f154-4d1b-bdda-ae8612309b74
 		summarizeBy: none
 		sourceColumn: severity
 
@@ -44,7 +44,7 @@ table dim_rule
 
 	column critical
 		dataType: boolean
-		lineageTag: 2232d024-f2e3-4c54-934b-b3c2f9d69f41
+		lineageTag: 5d6a2b0d-75ff-4cb0-b3d1-f9694dc25981
 		summarizeBy: none
 		sourceColumn: critical
 
@@ -52,7 +52,7 @@ table dim_rule
 
 	column mode
 		dataType: string
-		lineageTag: e32053ef-9861-44ca-a9bd-9d79de8afcf2
+		lineageTag: 6124c94f-507f-4477-8a8d-60289ba09cc2
 		summarizeBy: none
 		sourceColumn: mode
 
@@ -61,7 +61,7 @@ table dim_rule
 	column max_fail_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: a7abf636-0c0a-4110-8ac4-5c37a51bd8ea
+		lineageTag: d9fef33a-c80b-4c7b-8d1a-40ac59889f55
 		summarizeBy: sum
 		sourceColumn: max_fail_rate
 
@@ -69,7 +69,7 @@ table dim_rule
 
 	column description
 		dataType: string
-		lineageTag: 10604aef-827d-45fe-be1e-8f067c94b42b
+		lineageTag: 18ae5807-385e-4b97-a3fb-e22bb90684af
 		summarizeBy: none
 		sourceColumn: description
 
@@ -77,7 +77,7 @@ table dim_rule
 
 	column 'Dimension qualité'
 		dataType: string
-		lineageTag: 95d58e42-b6f1-4441-b93c-8cd0fb58b411
+		lineageTag: d12f7808-f65b-41dd-9f1c-e3bcee537cb1
 		summarizeBy: none
 		sourceColumn: Dimension qualité
 
