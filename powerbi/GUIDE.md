@@ -1,10 +1,15 @@
 # Tableau de bord Power BI (`powerbi/DataQuality.pbix`)
 
 Ouvrir `DataQuality.pbix` (ou sa version projet `DataQuality.pbip`) dans Power BI Desktop, puis **Accueil > Actualiser**.
-Les tables sont lues dans le dossier `data/metrics/` ; si le projet est déplacé, modifier le paramètre de dossier
-(**Transformer les données > Modifier les paramètres**).
+
+- Les tables sont lues **directement sur GitHub** (`data/metrics/` du dépôt public) : l'actualisation fonctionne
+  quel que soit l'endroit où le dépôt est cloné. À la première actualisation, choisir l'accès **Anonyme**.
+- Pour lire un dossier local à la place (par exemple un nouveau run non poussé) : **Transformer les données >
+  Modifier les paramètres > SourceMetriques**, puis indiquer le chemin du dossier, ex. `D:igdata-dq\data\metrics\`.
 
 Ce document décrit la construction du tableau de bord : chargement des tables, modèle, mesures DAX et pages.
+Les exemples de la section 1 utilisent un dossier local (paramètre `MetricsFolder`) ; dans le fichier livré, ce
+paramètre s'appelle `SourceMetriques` et pointe vers GitHub.
 
 ## 1. Paramètre et chargement des tables (Power Query)
 

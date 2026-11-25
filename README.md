@@ -71,6 +71,14 @@ versionnées ; seuls les résultats (`data/metrics/`) et le manifeste des défau
 | Graphiques | `.\.venv\Scripts\python.exe scripts\08_charts.py` | quelques secondes |
 | Tableau de bord | ouvrir `powerbi\DataQuality.pbix` dans Power BI Desktop, puis Actualiser | 1 min |
 
+### Tableau de bord Power BI
+
+Ouvrir `powerbi\DataQuality.pbix` puis **Accueil > Actualiser** : les tables de résultats sont lues directement
+dans ce dépôt GitHub (`data/metrics/`), sans configuration, quel que soit l'emplacement du clone (choisir l'accès
+**Anonyme** à la première actualisation). Pour visualiser un run local non poussé, changer le paramètre
+`SourceMetriques` (Transformer les données > Modifier les paramètres) en un chemin de dossier. Détails :
+[powerbi/GUIDE.md](powerbi/GUIDE.md).
+
 ### Surveillance en direct dans deux terminaux
 
 ```powershell
